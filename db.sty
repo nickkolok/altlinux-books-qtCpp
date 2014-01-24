@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{db}[2008/06/21 v0.0 Helper package to support dblatex conversion
+results]
+\usepackage{listings}
+\usepackage{dbk_graphic}
+% \usepackage{dbk_hyper}
+% \usepackage{memhfixc}
+\providecommand{\hyperlabel}[1]{\relax}
+\providecommand{\href}[2]{#2\footnote{\url{#1}}}
+\providecommand{\nolinkurl}[1]{\url{#1}}
+\lstset{basicstyle=\ttfamily\small}
+\endinput

@@ -1,0 +1,88 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{format}[2008/06/13 v0.01 Helper package for standard
+ALT book formats]
+\DeclareOption{lmp152x229}{%
+ % %% format letmeprint.ru
+ % %% 152x229
+ \setstocksize{229mm}{152mm}
+ \settrimmedsize{227mm}{150mm}{*}
+ \setlength{\trimtop}{\stockheight-\paperheight}
+ \setlength{\trimedge}{\stockwidth-\paperwidth}
+ \settrims{.5\trimtop}{\trimedge}
+ \settypeblocksize{190mm}{112mm}{*}
+ \setlrmargins{*}{*}{0.5}
+ \setulmargins{*}{*}{1}
+}
+\DeclareOption{70x100}{%
+  % %% format
+  % %% 70x100/16
+  \setstocksize{250mm}{175mm}
+  \settrimmedsize{240mm}{170mm}{*}
+  \setlength{\trimtop}{\stockheight-\paperheight}
+  \setlength{\trimedge}{\stockwidth-\paperwidth}
+  \settrims{.5\trimtop}{\trimedge}
+  \settypeblocksize{185mm}{130mm}{*}
+  \setlrmargins{*}{*}{0.5}
+  \setulmargins{*}{*}{1}
+  % \setheadfoot{12pt}{0pt}
+}
+\DeclareOption{a4brochure}{%
+  \setstocksize{297mm}{210mm}
+  \settrimmedsize{297mm}{210mm}{*}
+  \settrims{0pt}{0pt}
+  \settypeblocksize{230mm}{160mm}{*}
+  \setlrmargins{*}{*}{*}
+  \setulmargins{*}{*}{1}
+}
+\DeclareOption{a5brochure}{%
+  \setstocksize{210mm}{148.5mm}
+  \settrimmedsize{200mm}{143mm}{*}
+  \setlength{\trimtop}{\stockheight-\paperheight}
+  \setlength{\trimedge}{\stockwidth-\paperwidth}
+  \settrims{.5\trimtop}{\trimedge}
+  \settypeblocksize{163mm}{112mm}{*}
+  \setlrmargins{*}{*}{0.5}
+  \setulmargins{*}{*}{1}
+}
+\DeclareOption{a5book}{%
+  % %% format
+  % %% a5 brochure
+  \setstocksize{210mm}{148.5mm}
+  \settrimmedsize{205mm}{143mm}{*}
+  \setlength{\trimtop}{\stockheight-\paperheight}
+  \setlength{\trimedge}{\stockwidth-\paperwidth}
+  \settrims{.5\trimtop}{\trimedge}
+  \settypeblocksize{165mm}{112mm}{*}
+  \setlrmargins{*}{*}{0.5}
+  \setulmargins{*}{*}{1}
+  % \setheadfoot{12pt}{0pt}
+}
+\DeclareOption{60x84}{%
+  % %% format
+  % %% approx 60x84/16 brochure
+  \setstocksize{210mm}{145mm}
+  \settrimmedsize{205mm}{143mm}{*}
+  \setlength{\trimtop}{\stockheight-\paperheight}
+  \setlength{\trimedge}{\stockwidth-\paperwidth}
+  \settrims{.5\trimtop}{\trimedge}
+  \settypeblocksize{165mm}{112mm}{*}
+  \setlrmargins{*}{*}{0.5}
+  \setulmargins{*}{*}{1}
+}
+\DeclareOption{dvdbox}{%
+%   \setstocksize{183mm}{125mm}
+% dvd brochure on a5 stock paper
+  \setstocksize{210mm}{148mm}
+  \settrimmedsize{183mm}{125mm}{*}
+  \setlength{\trimtop}{\stockheight-\paperheight}
+  \setlength{\trimedge}{\stockwidth-\paperwidth}
+  \settrims{.5\trimtop}{\trimedge}
+  \settypeblocksize{150mm}{100mm}{*}
+  \setlrmargins{*}{*}{1}
+  \setulmargins{*}{*}{1}
+}
+\ExecuteOptions{70x100}
+\ProcessOptions\relax
+\checkandfixthelayout
+\endinput
+% first draft; only memoir class supported yet

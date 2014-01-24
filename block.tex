@@ -1,0 +1,317 @@
+% typical setup for Alt Libraray book
+% \documentclass[draft,70x100]{altlibrary}
+% A5 brochure (for printed docs); class options intended for automatic layout
+% FIXME draft > final
+\documentclass[draft,10pt,a5book,auto,makeidx]{altlibrary}
+%\documentclass[final,10pt,a5book,auto,makeidx]{altlibrary}
+
+\usepackage{m-k} 
+\usepackage{db}
+\usepackage{amssymb}
+\usepackage{mhsetup}
+\usepackage{mathtools}
+
+%\usepackage{amsmath}
+% пропадают символы + -  в индексах и не только.
+%\usepackage{pxfonts,txfonts}
+
+\usepackage{ltxtable}
+%\usepackage{graphicx}
+%\usepackage{urwcyr}
+
+%\usepackage{multirow}
+\usepackage{multicol}
+%\usepackage{slashbox}
+\usepackage{textcomp}
+%\usepackage[Q=yes]{examplep}
+%\usepackage{longtable}
+\usepackage{makeidx}
+\usepackage{index}
+%\usepackage{verbatim}
+\usepackage{rotating}%повороты рисунков и подписей
+\usepackage{slashbox}%диагональ в заголовке таблицы
+%\usepackage{footmisc}
+%\usepackage[utf8]{inputenc} %есть в стиле
+
+%\usepackage{listings} % есть в db.sty
+\lstloadlanguages{[LaTeX]TeX,bash,Octave}
+\lstset{%
+ language=C++,% выбираем язык по умолчанию
+ basicstyle=\footnotesize,% the size of the fonts that are used for the code
+ escapechar=`,% |«выпадаем» в LTEX|
+ extendedchars=true,%false%true,% включаем не латиницу
+ showstringspaces=false,         % underline spaces within strings
+ showspaces=false,
+ frame=trbl,% рамка сверху и снизу
+ commentstyle=\itshape,% шрифт для комментариев
+ stringstyle =\ttfamily,% шрифт для строк
+ breaklines=true,%
+ basicstyle=\footnotesize,%\small,%
+ captionpos=bl,
+ inputencoding=utf8
+% inputencoding=utf8x%что-то одно или utf8 или utf8x но однвременно с altlibrary.cls:\RequirePackage[utf8x]{inputenc}
+}
+
+
+\makeatletter
+\makeindex
+\newcommand{\setspace@singlespace}{1}
+\makeatother
+%----------первые и последние страницы------------------
+\series{Библиотека ALT Linux}
+
+\booktitle{Программирование на языке С++ в среде Qt Creator}
+\booksubtitle{}
+\coverauthors[Е.\,Р.\,Алексеев, Г.\,Г.\,Злобин, Д.\,А.\,Костюк, О.\,В.\,Чеснокова, А.\,С.\,Чмыхало]{Е.\,Р.\,Алексеев, Г.\,Г.\,Злобин, Д.\,А.\,Костюк,\\ О.\,В.\,Чеснокова, А.\,С.\,Чмыхало}
+\bibannoteauthors{Е.\,Р.\,Алексеев, Г.\,Г.\,Злобин, Д.\,А.\,Костюк,О.\,В.\,Чеснокова, А.\,С.\,Чмыхало}
+% Фамилия Имя Отчество первых трёх авторов полностью
+\fullauthors{Алексеев Евгений Ростиславович, Григорий Григорьевич Злобин, Дмитрий Александрович Костюк, Чеснокова Оксана Витальевна, Чмыхало Александр Сергеевич}
+
+% Произвольный текст в конце биб. описания:
+%\bibnote{}
+
+\publisher[ALT Linux]{ALT Linux}
+
+\pubaddress{М.}{Москва}
+\pubyear{2014}
+%\classify{УДК}{ББК}{авторский знак}
+\classify{004.43}{32.973.26-018.1}{А47}%УДК Программные средства, Языки программирования ББК - Языки программирования.
+\small{
+\isbn{978-5-905167-16-4}
+}
+\annotation{%
+Книга является учебником по алгоритмизации и программированию на \Sys{С++} и пособием по разработке визуальных приложений в
+среде \Sys{QT Creator}. Также в книге описаны среда программирования \Sys{Qt Creator}, редактор \Sys{Geany}, кроссплатформенная билиотека
+построения графиков \Sys{MathGL}. При чтении книги не требуется предварительного знакомства с программированием.
+
+Издание предназначено для студентов, аспирантов и преподавателей вузов, а также для всех, кто изучает программирование
+на \Sys{С++} и осваивает кроссплатформенный инструментарий \Sys{Qt} для разработки программного обеспечения.
+
+
+\smallskip
+Сайт книги: \url{http://www.altlinux.org/Books:Qt-C++}
+\smallskip
+
+Книга адресована студентам, преподавателям инженерных и математических
+специальностей, а также научным работникам.
+}
+
+\team{%
+  Оформление обложки: А.\,С.\,Осмоловская\\
+  Вёрстка: В.\,Л.\,Черный\\
+  Редактура: В.\,Л.\,Черный
+}
+
+\sales{По вопросам приобретения обращаться:
+ООО <<Альт Линукс>> (495)662-38-83
+E-mail: sales@altlinux.ru
+\url{http://altlinux.ru}}
+
+
+\makeatletter
+\legalnotice{Материалы, составляющие данную книгу, распространяются на условиях лицензии GNU FDL.
+    Книга содержит следующий текст,
+    помещаемый на первую страницу обложки: <<\inseries\space
+    ``\@series''>>. Название: <<\@fullbooktitle>>.  Книга не содержит
+    неизменяемых разделов.
+    Авторы разделов указаны в заголовках
+    соответствующих разделов.
+    ALT Linux --- торговая марка компании ALT Linux. Linux ---
+    торговая марка Линуса Торвальдса. Прочие встречающиеся названия
+    могут являться торговыми марками соответствующих владельцев.
+}
+\copyleft{\@bibauthors, \@pubyear\par ALT Linux,}
+\makeatother
+
+\pubtype{Научное издание}
+
+\newcommand{\izdlist}{\IfFileExists{\jobname.stat}{Уч.-изд. л. \input{\jobname.stat}}{}}
+\signed{Подписано в печать 26.08.14. Формат 60x90/16.\\
+Гарнитура Computer Modern. Печать офсетная. Бумага офсетная.\\
+Усл. печ. л. 23,0. \izdlist.  
+Тираж 999 экз. Заказ}
+
+\fullpublishers{ООО <<Альт Линукс>>\\
+Адрес для переписки: 119334, Москва, 5-й Донской проезд, д. 15, стр. 6\\
+Телефон: (495) 662-38-83. E-mail: sales@altlinux.ru\\
+\url{http://altlinux.ru}}
+%----------------конец первые и последние страницы ------
+
+%%%%%%%%% меняем название Глава на Приложение в TOC
+\makeatletter
+\renewcommand*{\l@appendix}[2]{%
+\setlength{\cftchapternumwidth}{2.0em}%стандартное значение 1.5em, видимо переопределено где-то на \skip138
+%\show\l@chapapp
+%\show\cftchapternumwidth
+%\renewcommand{\chaptername}{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
+\renewcommand{\chaptername}{}
+\l@chapapp{#1}{#2}{\appendixname~}}
+\makeatother
+
+
+%\usepackage{wrapfig}
+\newcommand{\command}[1]{\texttt{#1}}
+\newcommand{\interface}[1]{\hskip0pt\textbf{#1}}
+\let\emphasis\emph
+\newenvironment{attention}{\begin{notice}{\noticename}}{\end{notice}}
+\newcommand{\fyiname}{\cyr\CYRK\space\cyrs\cyrv\cyre\cyrd\cyre\cyrn\cyri\cyryu}
+\newenvironment{fyi}{\begin{notice}{\fyiname}}{\end{notice}}
+%%%%%%%%%%% hyperrefference noneed for printable pdf
+%\usepackage[pdftex,%ps2pdf,                %%% hyper-references for ps2pdf
+%bookmarks=true,%                   %%% generate bookmarks ...
+%bookmarksnumbered=true,%           %%% ... with numbers
+%hypertexnames=false,%              %%% needed for correct links to figures !!!
+%breaklinks=true,%false,%                  %%% breaks lines, but links are very small
+%linkbordercolor={0 0 1},%          %%% blue frames around links
+%pdfborder={0 0 112.0}
+%colorlinks=true,%
+%linkcolor=blue,%
+%unicode]{hyperref}
+%my new foot
+\makeatletter
+% поменять шрифт на sans serif:
+\renewcommand{\@evenfoot}{\footnotesize\textsf{Программирование на языке С++ в среде Qt Creator \hfil \textcopyright\,2014 Алексеев Е.Р.}} 
+
+\makeatother
+
+%new list of programms
+%\newlistof{listofprg}{lop}{Список программ}
+%counter for programs
+%\newcounter{prog}
+%\renewcommand{\theprog}{\arabic{prog}}
+%\makeatletter
+%\newcommand{\l@prog}[2]{\hbox to\textwidth{#1\dotfill #2}}
+%\makeatother
+%\newcommand{\prg}[2]{\refstepcounter{prog}%
+%\addcontentsline{lop}{prog}{\theprog . {#1}}
+%\par\noindent\Emph{Программа \theprog .} {#1}\label{#2}\par
+%\addcontentsline{lop}{prog}{\theprog . {#1}}
+%}
+%\newenvironment{ramka}[1]{\par\noindent\begin{tabular}{|p{#1}|}%
+%			\hline}
+%{\\\hline\end{tabular}}
+
+% \counterwithin*{footnote}{page}
+% \renewcommand
+%%%%%%%% for octave %%%%%%
+\newcounter{lstg}[chapter]% counter for listings
+\renewcommand{\thelstg}{\thechapter.\arabic{lstg}}
+\newcommand{\lstg}[1]{\refstepcounter{lstg}%
+\par\noindent\Emph{Листинг \thelstg .}\label{#1}}
+
+%\lstnewenvironment{Lstg}[1]{
+%}{\nopagebreak\lstg{#1}
+%}
+% Листинг без имени
+\renewcommand{\lstlistingname}{Листинг}
+\lstnewenvironment{Lstg}[1]{\noindent
+  \lstset{caption={[Листинг]\,},
+          label=#1
+	  }
+}{}
+% Листинг с именем
+\lstnewenvironment{Lstgn}[2]{\noindent
+  \lstset{caption={#2},
+          label=#1
+         }
+}{}
+
+\newcounter{prm}[chapter]% counter for examples
+\renewcommand{\theprm}{\thechapter.\arabic{prm}}
+\newcommand{\prm}[1]{\refstepcounter{prm}%
+\par\Emph{Пример \theprm .}\label{#1}}
+
+
+%%%%% end for octave %%%%%%%
+\graphicspath{{book/img}}
+
+%     Modules selectioin and order modelled upon docs-issue-desktop:block.tex
+
+\tightlists
+\midsloppy
+
+%\finalhyphendemerits=10000
+
+%\gdef\appendixname{%
+%    {\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}%
+%\gdef\appendixtocname{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
+
+\makeatletter
+\renewcommand{\@memb@bsec}{\section*{\bibname}\prebibhook}
+\makeatother
+
+%%%%------------------------%
+\includeonly{book/intro}
+\begin{document}
+
+%%%%%%%%%%
+\mainmatter
+%% выравнивание заголовков table и longtable к виду Таблица N.M: Название
+%\captiondelim{: }
+\captiondelim{. }
+
+\maketitlepages
+
+\tableofcontents*
+\clearpage
+
+%% include chapters here
+% \let\par\russianpar
+% \input{path/file}
+
+%% xml modules commented out
+%\chapter{Глава 1}
+\addcontentsline{toc}{chapter}{Предисловие}
+\markboth{Предисловие}{Предисловие}
+\include{book/intro}
+\include{book/chapter_1}
+\include{book/chapter_2}
+\include{book/chapter_3}
+\include{book/chapter_4}
+\include{book/chapter_5}
+\include{book/chapter_6}
+\include{book/chapter_7}
+\include{book/chapter_8}
+\include{book/chapter_9}
+\include{book/chapter_10}
+\include{book/chapter_11}
+\include{book/chapter_12}
+
+%\show\bibname
+%\show\nobibintoc
+\renewcommand{\bibname}{\Emph{Список литературы}}
+\backmatter
+\input{book/biblio}
+
+%\def\appendixtocname{Приложения}
+%\def\appendixpagename{\sffamily Приложения}
+%\def\appendixname{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
+%\renewcommand*{\cftappendixname}{\appendixname~}
+%\appendix
+%%% Добавочная страница Приложения и соответствующая запись в TOC
+%\appendixpage*
+%\addappheadtotoc
+
+%\appendixname %%%%% печатает слово "Приложение" в тексте книги
+%\addcontentsline{toc}{Приложения}
+
+\clearpage
+%\makeindex
+%\clearpage
+%\listoffigures
+%\clearpage
+%\listoftables
+%\clearpage
+%\input{book/advert}
+{\footnotesize
+\printindex
+
+}
+\makefinalpage
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,157 @@
+\ProvidesPackage{m-k}[2008/06/10 v0.02 LaTeX bindings for ALDConvert m-k -> latex]
+\NeedsTeXFormat{LaTeX2e}
+% \newboolean{pinguins}
+% \DeclareOption{pinguins}{%
+%   \setboolean{pinguins}{true}
+% }
+% \RequirePackage{alltt}
+%\RequirePackage{verbatim}
+% \RequirePackage{mathtext}
+%\RequirePackage{path}
+\RequirePackage{ifthen}
+\RequirePackage[obeyspaces,spaces]{url}
+% \RequirePackage[Q=yes]{examplep}
+%\RequirePackage{varioref}
+\RequirePackage{xspace}
+\RequirePackage{citehack}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\newcommand{\Emph}[1]{\textbf{#1}}  
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\Keyword}[2][]{%
+  \ifthenelse{\equal{#1}{\empty}}{\index{#1}}{\index{#2}}%
+  \textbf{#2}}
+%\newcommand{\noticename}{\cyr\CYRV\cyrn\cyri\cyrm\cyra\cyrn\cyri\cyre}
+\newcommand{\examplename}{\cyr\CYRP\cyrr\cyri\cyrm\cyre\cyrr}
+\newcommand{\marginalia}[2]{%
+  \begin{notice}{#1}%{\noticename}
+    #2
+  \end{notice}
+}
+%\newcommand{\Marginalia}[2][]{%
+%  \begin{quotation}
+%    \ifx x#1x \textbf{#1}\quad\fi #2
+%  \end{quotation}
+%}
+
+\newcommand{\Marginalia}[2]{%
+	\noindent\parbox[l]{\textwidth}{#1}\par
+        \begin{quote}%
+	#2
+	\end{quote}%
+}
+\newenvironment{Termdef}[2]{
+	\noindent\parbox[l]{\textwidth}{#1}\par
+	\begin{quote}%
+	       #2
+	       \par\medskip
+	       \noindent\Emph{\examplename}
+
+               \begin{quote}
+}{
+  \end{quote}%
+  \end{quote}%
+}
+
+% \Sys with url package
+% \newcommand{\Qsys}{\begingroup \def\UrlLeft{\flqq{}}\def\UrlRight{\frqq{}}\Url}
+\newcommand{\Sys}[1]{\texttt{#1}}
+\newcommand{\Sysverb}{\begingroup \Url}
+\newcommand{\Qsys}[1]{\flqq{}\texttt{#1}\frqq{}}
+\renewcommand{\verbatim@font}{\ttfamily\small}
+% \newcommand{\Sys}[1]{\Q{#1}}
+% \newcommand{\Qsys}[1]{\flqq{}\Q{#1}\frqq{}}
+\newcommand{\replace}[1]{\emph{#1}}
+\newcommand{\seebelowrus}{\cyrs\cyrm.~\cyrn\cyri\cyrzh\cyre}
+\newcommand{\pagerus}{\cyrs\cyrt\cyrr.}
+% \newcommand{\Ref}[2][]{%
+%   \vrefpagenum\targetpage{#2}%
+%   \ifthenelse{\equal{\targetpage}{\value{page}}}%
+%   {%
+%     #1 {\ttfamily[\seebelowrus]}%
+%   }{%
+%     \ifthenelse{\equal{#1}{\empty}}{%
+%       {\ttfamily[\pagerus~\pageref{#2}]}%
+%     }{%
+%       #1 {\ttfamily[\pagerus~\pageref{#2}]}%
+%     }%
+%   }%
+% }
+\newcommand{\Ref}[2][]{%
+  \ifthenelse{\equal{#1}{\empty}}{%
+    (\ref{#2})
+  }{%
+    #1 (\ref{#2})
+  }
+}
+\newcommand{\Href}[2][]{%
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \Sysverb{#2}%
+  }{%
+    #1\footnote{\Sysverb{#2}}%
+%     \@Href#2\@nil{#1}%
+  }%
+}
+% \def\@Href{\@ifnextchar .{\@moduleref}{\@footnoteref}}
+\def\@moduleref../#1/index.html\@nil{\ref{#1}}
+% \def\@footnoteref#1\@nil#2{#2\footnote{#1}}
+\newcommand{\Mref}[2][]{%
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \@moduleref#2\@nil%
+  }{%
+    \@moduleref#2\@nil\space (#1)%
+  }%
+}
+\newcommand{\Error}[1]{\PackageWarning{m-k}{Unfixed error left in text
+    at line: \the\inputlineno}}
+\newcommand{\Figure}[4][]{%
+  \begin{figure}[thbp]
+    \centering
+    \ifthenelse{\equal{#1}{\empty}}{%
+      \includegraphics[width=.8\textwidth]{#3}%
+    }{%
+      \includegraphics[#1]{#3}}%
+    \caption{#2}
+    \label{#4}
+  \end{figure}
+}
+\floatstyle{plain}
+\newfloat{example}{thbp}{loe}[chapter]
+\floatname{example}{\examplename}
+\restylefloat*{example}
+\newenvironment{Example}[2]{%
+%\caption{#1}
+\label{#2}%
+\small\verbatim
+ }{%
+\endverbatim
+}
+%%% Notice
+\newlength{\noticeskip}
+\setlength\noticeskip{1ex plus .2ex minus .4ex}
+\newenvironment{notice}[1]{
+  \interlinepenalty=10000
+%  \ifthenelse{\boolean{pinguins}}{% pinguins
+%  \setlength\leftskip{-\leftmargin}
+  \setlength\rightskip{0pt}
+  \vspace{\noticeskip}
+%  \noindent\parbox[c]{18mm}{\includegraphics[totalheight=18mm]{noticepenguin.eps}}%
+  \noindent\parbox[c]{18mm}{\includegraphics[totalheight=18mm]{#1.eps}}%
+  \setlength\@tempdima{\linewidth-23mm}%
+  \hfill\begin{minipage}{\@tempdima}\noindent{\sffamily\mdseries}\strut\quad\par%
+%    \hrule\vspace{1ex}
+%    }{%
+%      
+%    }
+}{
+  \end{minipage}\par
+  \vspace{\noticeskip}
+}
+%% label hack
+\let\savelabel\label
+\renewcommand{\label}[1]{\savelabel{#1}\savelabel{<#1>}}
+\endinput
+%
+%% end of file m-k.sty
+
+

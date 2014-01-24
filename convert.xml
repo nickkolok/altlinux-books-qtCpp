@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- convert.xml
+	Default conversion parameters for ALT Library OpenOfficeBook
+ -->
+
+<config>
+  <!-- General conversion -->
+  <option name="backend" value="pdftex" />
+  <option name="inputencoding" value="utf8" />
+  <option name="multilingual" value="false"/>
+  <option name="no_preamble" value="true" />
+  <!-- Package using options -->
+  <option name="use_ooomath" value="true" />
+  <option name="use_color" value="false" />
+  <option name="use_colortbl" value="false" />
+  <option name="use_hyperref" value="false" />
+  <option name="use_endnotes" value="false" />
+  <option name="use_bibtex" value="false" />
+  <!-- General markup section -->
+  <option name="formatting" value="ignore_most" />
+  <option name="page_formatting" value="ignore_all" />
+  <option name="ignore_empty_paragraphs" value="true" />
+  <option name="ignore_hard_page_breaks" value="false" />
+  <option name="ignore_hard_line_breaks" value="false" />
+  <option name="ignore_double_spaces" value="true" />
+  <option name="debug" value="false" />
+  <!-- Headings -->
+  <heading-map max-level="5">
+    <heading-level-map writer-level="0" name="chapter" level="0" />
+    <heading-level-map writer-level="1" name="section" level="1" />
+    <heading-level-map writer-level="2" name="subsection" level="2" />
+    <heading-level-map writer-level="3" name="subsubsection" level="3" />
+    <heading-level-map writer-level="4" name="paragraph" level="4" />
+    <heading-level-map writer-level="5" name="subparagraph" level="5" />
+  </heading-map>
+  <!-- User defined stuff -->
+  <!-- Images -->
+  <option name="figure_sequence_name" value="Drawing" />
+  <option name="image_options" value="scale=0.33" />
+  <option name="remove_graphics_extension" value="true" />
+  <option name="keep_image_size" value="true" />
+  <option name="float_figures" value="true" />
+  <option name="float_options" value="htb" />
+  <!-- Tables -->
+<!--  <option name="simple_table_limit" value="80" /> -->
+  <option name="use_tabulary" value="true" />
+  <custom-preamble />
+  <!-- Styles -->
+  <style-map name="Title" class="paragraph" before="\chapter{" after="}" line-break="false" />
+  <style-map name="author" class="paragraph" before="\author{" after="}" line-break="false" />
+  <style-map name="tipz" class="paragraph" before="" after="" line-break="false" />
+  <style-map name="tipz" class="paragraph-block" next="tipz" before="\begin{tipz}" after="\end{tipz}" line-break="false" />
+  <style-map name="Strong Emphasis" class="text" before="\textbf{" after="}" />
+  <!-- Strings -->
+  <string-replace input=" -- " latex-code=' "--- ' />
+  <string-replace input='"' latex-code="&lt;&lt;" />
+</config>
+

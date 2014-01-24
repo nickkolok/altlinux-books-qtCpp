@@ -1,0 +1,91 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{formats}%
+    [2002/12/19
+       (some format definitions, by V.Radionov and V.Shuvalov)]
+
+%%
+%% By V.Radionov, some lines are commented
+%%
+\newdimen\field@h
+\newdimen\interline@h
+
+\DeclareOption{60x90/16}{\field@h185mm
+            \topmargin10mm\addtolength{\topmargin}{-1in}
+            \textwidth115mm
+            \oddsidemargin16.75mm\addtolength{\oddsidemargin}{-1in}
+            \evensidemargin\oddsidemargin
+%            \special{papersize=145mm,215mm}
+}
+
+\DeclareOption{60x90/16nohead}{\field@h185mm
+            \topmargin10mm\addtolength{\topmargin}{-1in}
+            \textwidth115mm
+            \oddsidemargin16.75mm\addtolength{\oddsidemargin}{-1in}
+            \evensidemargin\oddsidemargin
+            \headheight0pt\headsep\footskip
+            \advance\topmargin-\footskip
+%            \special{papersize=145mm,215mm}
+}
+
+\DeclareOption{60x88/16}{\field@h180mm
+            \topmargin10mm\addtolength{\topmargin}{-1in}
+            \textwidth112mm
+            \oddsidemargin16.75mm\addtolength{\oddsidemargin}{-1in}
+            \evensidemargin\oddsidemargin
+%            \special{papersize=145mm,210mm}
+%            \paperwidth145mm\paperheight210mm
+}
+
+\DeclareOption{a4/2}{\field@h175mm
+        \topmargin10mm      
+        \textwidth118.5mm
+        \oddsidemargin10mm
+        \evensidemargin20mm
+%        \special{papersize=148.5mm,210mm}
+}
+
+%%
+%% Added by V.Shuvalov
+%%
+\DeclareOption{84x108/32nohead}{\field@h167mm
+            \topmargin10mm
+            \textwidth100mm
+            \headheight0pt
+            \headsep0pt
+            \footskip6mm
+            \oddsidemargin16.75mm
+            \evensidemargin\oddsidemargin}
+
+%%
+%% Added by V.Shuvalov
+%%
+\DeclareOption{60x84/8}{\field@h252.5mm
+            \topmargin22mm\addtolength{\topmargin}{-1in}
+            \textwidth176mm
+            \oddsidemargin17.75mm\addtolength{\oddsidemargin}{-1in}
+            \evensidemargin\oddsidemargin
+            \evensidemargin\oddsidemargin}
+
+%%
+%% Added by V.Shuvalov
+%%
+\DeclareOption{70x100/16}{\field@h200mm
+            \topmargin10mm\addtolength{\topmargin}{-1in}
+            \textwidth125mm
+            \oddsidemargin16.75mm\addtolength{\oddsidemargin}{-1in}
+            \evensidemargin\oddsidemargin
+%            \paperwidth165mm\paperheight235mm
+}
+
+\ProcessOptions
+
+\interline@h\baselinestretch\baselineskip
+\advance\field@h-\headheight
+\advance\field@h-\headsep
+\advance\field@h-\topskip
+\divide\field@h\interline@h
+\PackageInfo{formats}{This is max. \number\field@h\space lines per page}
+\textheight\number\field@h\interline@h
+\advance\textheight\topskip
+
+\endinput
