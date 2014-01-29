@@ -2,8 +2,8 @@
 % \documentclass[draft,70x100]{altlibrary}
 % A5 brochure (for printed docs); class options intended for automatic layout
 % FIXME draft > final
-\documentclass[draft,10pt,a5book,auto,makeidx]{altlibrary}
-%\documentclass[final,10pt,a5book,auto,makeidx]{altlibrary}
+%\documentclass[draft,10pt,a5book,auto,makeidx]{altlibrary}
+\documentclass[final,10pt,a5book,auto,makeidx]{altlibrary}
 
 \usepackage{m-k} 
 \usepackage{db}
@@ -34,15 +34,15 @@
 %\usepackage[utf8]{inputenc} %есть в стиле
 
 %\usepackage{listings} % есть в db.sty
-\lstloadlanguages{[LaTeX]TeX,bash,Octave}
+\lstloadlanguages{[LaTeX]TeX,bash,C,C++}
 \lstset{%
- language=C++,% выбираем язык по умолчанию
+ language=[GNU]C++,% выбираем язык по умолчанию
  basicstyle=\footnotesize,% the size of the fonts that are used for the code
  escapechar=`,% |«выпадаем» в LTEX|
  extendedchars=true,%false%true,% включаем не латиницу
  showstringspaces=false,         % underline spaces within strings
  showspaces=false,
- frame=trbl,% рамка сверху и снизу
+% frame=trbl,% рамка сверху и снизу
  commentstyle=\itshape,% шрифт для комментариев
  stringstyle =\ttfamily,% шрифт для строк
  breaklines=true,%
@@ -170,23 +170,23 @@ E-mail: sales@altlinux.ru
 %my new foot
 \makeatletter
 % поменять шрифт на sans serif:
-\renewcommand{\@evenfoot}{\footnotesize\textsf{Программирование на языке С++ в среде Qt Creator \hfil \textcopyright\,2014 Алексеев Е.Р.}} 
+\renewcommand{\@evenfoot}{\footnotesize\textsf{Программирование на языке С++ в среде Qt Creator \hfil \textcopyright\,2014 Алексеев Е.Р. и др.}} 
 
 \makeatother
 
 %new list of programms
-%\newlistof{listofprg}{lop}{Список программ}
+\newlistof{listofprg}{lop}{Список программ}
 %counter for programs
-%\newcounter{prog}
-%\renewcommand{\theprog}{\arabic{prog}}
-%\makeatletter
-%\newcommand{\l@prog}[2]{\hbox to\textwidth{#1\dotfill #2}}
-%\makeatother
-%\newcommand{\prg}[2]{\refstepcounter{prog}%
-%\addcontentsline{lop}{prog}{\theprog . {#1}}
-%\par\noindent\Emph{Программа \theprog .} {#1}\label{#2}\par
-%\addcontentsline{lop}{prog}{\theprog . {#1}}
-%}
+\newcounter{prog}[chapter]
+\renewcommand{\theprog}{\arabic{chapter}.\arabic{prog}}
+\makeatletter
+\newcommand{\l@prog}[2]{\hbox to\textwidth{#1\dotfill #2}}
+\makeatother
+\newcommand{\prg}[2]{\refstepcounter{prog}%
+\addcontentsline{lop}{prog}{\theprog . {#1}}
+\par\noindent\Emph{Задача \theprog .} {#1}\label{#2}\par
+\addcontentsline{lop}{prog}{\theprog . {#1}}
+}
 %\newenvironment{ramka}[1]{\par\noindent\begin{tabular}{|p{#1}|}%
 %			\hline}
 %{\\\hline\end{tabular}}
@@ -223,7 +223,7 @@ E-mail: sales@altlinux.ru
 
 
 %%%%% end for octave %%%%%%%
-\graphicspath{{book/img}}
+\graphicspath{{img}}
 
 %     Modules selectioin and order modelled upon docs-issue-desktop:block.tex
 
@@ -241,7 +241,7 @@ E-mail: sales@altlinux.ru
 \makeatother
 
 %%%%------------------------%
-\includeonly{book/intro}
+%\includeonly{book/intro,book/glava1}
 \begin{document}
 
 %%%%%%%%%%
@@ -264,24 +264,24 @@ E-mail: sales@altlinux.ru
 \addcontentsline{toc}{chapter}{Предисловие}
 \markboth{Предисловие}{Предисловие}
 \include{book/intro}
-\include{book/chapter_1}
-\include{book/chapter_2}
-\include{book/chapter_3}
-\include{book/chapter_4}
-\include{book/chapter_5}
-\include{book/chapter_6}
-\include{book/chapter_7}
-\include{book/chapter_8}
-\include{book/chapter_9}
-\include{book/chapter_10}
-\include{book/chapter_11}
-\include{book/chapter_12}
+\include{book/glava1}
+\include{book/glava2}
+%\include{book/glava3}
+%\include{book/glava4}
+%\include{book/glava5}
+%\include{book/glava6}
+%\include{book/glava7}
+%\include{book/glava8}
+%\include{book/glava9}
+%\include{book/glava10}
+%\include{book/glava11}
+%\include{book/glava12}
 
 %\show\bibname
 %\show\nobibintoc
 \renewcommand{\bibname}{\Emph{Список литературы}}
 \backmatter
-\input{book/biblio}
+%\input{book/biblio}
 
 %\def\appendixtocname{Приложения}
 %\def\appendixpagename{\sffamily Приложения}

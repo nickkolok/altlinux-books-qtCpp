@@ -1,7 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{altlibrary}[2007/11/19 Class for ALT Linux Library
 series books]
-\RequirePackage[utf8x]{inputenc}
+\RequirePackage[utf8]{inputenc}
+%\RequirePackage[utf8x]{inputenc}
 \RequirePackage[english,russian]{babel}
 \RequirePackage{calc}
 \RequirePackage{indentfirst}
