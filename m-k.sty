@@ -14,7 +14,12 @@
 %\RequirePackage{varioref}
 \RequirePackage{xspace}
 \RequirePackage{citehack}
-\RequirePackage{float}
+% black конфликт с floatrow
+%\RequirePackage{float}
+%black - 2 строки добавил
+\let\newfloat\undefined
+\RequirePackage{floatrow}
+%%%%%%%%%%%%%%%%%%%
 \RequirePackage{graphicx}
 \newcommand{\Emph}[1]{\textbf{#1}}  
 \newcommand{\keyword}[1]{\textbf{#1}}
