@@ -125,8 +125,8 @@ index:
 #	iconv -f koi8-r -t utf-8 < main.ind. > main.ind
 #	rm -f main.ind.
 #	$(MAKE) latex
-#	rumakeindex block.idx
-	makeindex -t block.ilg block.idx > block.ind
+	./rumakeindex block
+#	makeindex -t block.ilg block.idx > block.ind
 #	mv block.ind block.ind.
 #	iconv -f koi8-r -t utf-8 < block.ind. > block.ind
 #	rm -f block.ind.

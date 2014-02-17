@@ -1,78 +1,211 @@
 #!/bin/sh
 
-BASE=`basename "$1" .idx`
+BASE=`basename $1 .idx`
 IDX=$BASE.idx
 IND=$BASE.ind
 ILG=$BASE.ilg
-cat $IDX | makeindex -t $ILG > $IND
-exit
+ENC=cp1251
+
 sed '
-s/\\IeC {\\CYRA }/¾/g
-s/\\IeC {\\cyra }/¿/g
-s/\\IeC {\\CYRB }/À/g
-s/\\IeC {\\cyrb }/Á/g
-s/\\IeC {\\CYRV }/Â/g
-s/\\IeC {\\cyrv }/Ã/g
-s/\\IeC {\\CYRG }/Ä/g
-s/\\IeC {\\cyrg }/Å/g
-s/\\IeC {\\CYRD }/Æ/g
-s/\\IeC {\\cyrd }/Ç/g
-s/\\IeC {\\CYRE }/È/g
-s/\\IeC {\\cyre }/É/g
-s/\\IeC {\\CYRYO }/Ê/g
-s/\\IeC {\\cyryo }/Ë/g
-s/\\IeC {\\CYRZH }/Ì/g
-s/\\IeC {\\cyrzh }/Í/g
-s/\\IeC {\\CYRZ }/Î/g
-s/\\IeC {\\cyrz }/Ï/g
-s/\\IeC {\\CYRI }/Ð/g
-s/\\IeC {\\cyri }/Ñ/g
-s/\\IeC {\\CYRISHRT }/Ò/g
-s/\\IeC {\\cyrishrt }/Ó/g
-s/\\IeC {\\CYRK }/Ô/g
-s/\\IeC {\\cyrk }/Õ/g
-s/\\IeC {\\CYRL }/Ö/g
-s/\\IeC {\\cyrl }/×/g
-s/\\IeC {\\CYRM }/Ø/g
-s/\\IeC {\\cyrm }/Ù/g
-s/\\IeC {\\CYRN }/Ú/g
-s/\\IeC {\\cyrn }/Û/g
-s/\\IeC {\\CYRO }/Ü/g
-s/\\IeC {\\cyro }/Ý/g
-s/\\IeC {\\CYRP }/Þ/g
-s/\\IeC {\\cyrp }/ß/g
-s/\\IeC {\\CYRR }/à/g
-s/\\IeC {\\cyrr }/á/g
-s/\\IeC {\\CYRS }/â/g
-s/\\IeC {\\cyrs }/ã/g
-s/\\IeC {\\CYRT }/ä/g
-s/\\IeC {\\cyrt }/å/g
-s/\\IeC {\\CYRU }/æ/g
-s/\\IeC {\\cyru }/ç/g
-s/\\IeC {\\CYRF }/è/g
-s/\\IeC {\\cyrf }/é/g
-s/\\IeC {\\CYRH }/ê/g
-s/\\IeC {\\cyrh }/ë/g
-s/\\IeC {\\CYRC }/ì/g
-s/\\IeC {\\cyrc }/í/g
-s/\\IeC {\\CYRCH }/î/g
-s/\\IeC {\\cyrch }/ï/g
-s/\\IeC {\\CYRSH }/ð/g
-s/\\IeC {\\cyrsh }/ñ/g
-s/\\IeC {\\CYRSHCH }/ò/g
-s/\\IeC {\\cyrshch }/ó/g
-s/\\IeC {\\CYRHRDSN }/ô/g
-s/\\IeC {\\cyrhrdsn }/õ/g
-s/\\IeC {\\CYRERY }/ö/g
-s/\\IeC {\\cyrery }/÷/g
-s/\\IeC {\\CYRSFTSN }/ø/g
-s/\\IeC {\\cyrsftsn }/ù/g
-s/\\IeC {\\CYREREV }/ú/g
-s/\\IeC {\\cyrerev }/û/g
-s/\\IeC {\\CYRYU }/ü/g
-s/\\IeC {\\cyryu }/ý/g
-s/\\IeC {\\CYRYA }/þ/g
-s/\\IeC {\\cyrya }/ÿ/g
-' $IDX 
-#| makeindex -t $ILG | tr '¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ' \
-#  'áÁâÂ÷×çÇäÄåÅ³£öÖúÚéÉêÊëËìÌíÍîÎïÏðÐòÒóÓôÔõÕæÆèÈãÃþÞûÛýÝÿßùÙøØüÜàÀñÑ' > $IND
+/^\\indexentry{/ {
+s/\\IeC {\\CYRA }/Ð/g
+s/\\IeC {\\cyra }/Ð‘/g
+s/\\IeC {\\CYRB }/Ð’/g
+s/\\IeC {\\cyrb }/Ð“/g
+s/\\IeC {\\CYRV }/Ð”/g
+s/\\IeC {\\cyrv }/Ð•/g
+s/\\IeC {\\CYRG }/Ð–/g
+s/\\IeC {\\cyrg }/Ð—/g
+s/\\IeC {\\CYRD }/Ð˜/g
+s/\\IeC {\\cyrd }/Ð™/g
+s/\\IeC {\\CYRE }/Ðš/g
+s/\\IeC {\\cyre }/Ð›/g
+s/\\IeC {\\CYRYO }/Ðœ/g
+s/\\IeC {\\cyryo }/Ð/g
+s/\\IeC {\\CYRZH }/Ðž/g
+s/\\IeC {\\cyrzh }/ÐŸ/g
+s/\\IeC {\\CYRZ }/Ð /g
+s/\\IeC {\\cyrz }/Ð¡/g
+s/\\IeC {\\CYRI }/Ð¢/g
+s/\\IeC {\\cyri }/Ð£/g
+s/\\IeC {\\CYRISHRT }/Ð¤/g
+s/\\IeC {\\cyrishrt }/Ð¥/g
+s/\\IeC {\\CYRK }/Ð¦/g
+s/\\IeC {\\cyrk }/Ð§/g
+s/\\IeC {\\CYRL }/Ð¨/g
+s/\\IeC {\\cyrl }/Ð©/g
+s/\\IeC {\\CYRM }/Ðª/g
+s/\\IeC {\\cyrm }/Ð«/g
+s/\\IeC {\\CYRN }/Ð¬/g
+s/\\IeC {\\cyrn }/Ð­/g
+s/\\IeC {\\CYRO }/Ð®/g
+s/\\IeC {\\cyro }/Ð¯/g
+s/\\IeC {\\CYRP }/Ð°/g
+s/\\IeC {\\cyrp }/Ð±/g
+s/\\IeC {\\CYRR }/Ð²/g
+s/\\IeC {\\cyrr }/Ð³/g
+s/\\IeC {\\CYRS }/Ð´/g
+s/\\IeC {\\cyrs }/Ðµ/g
+s/\\IeC {\\CYRT }/Ð¶/g
+s/\\IeC {\\cyrt }/Ð·/g
+s/\\IeC {\\CYRU }/Ð¸/g
+s/\\IeC {\\cyru }/Ð¹/g
+s/\\IeC {\\CYRF }/Ðº/g
+s/\\IeC {\\cyrf }/Ð»/g
+s/\\IeC {\\CYRH }/Ð¼/g
+s/\\IeC {\\cyrh }/Ð½/g
+s/\\IeC {\\CYRC }/Ð¾/g
+s/\\IeC {\\cyrc }/Ð¿/g
+s/\\IeC {\\CYRCH }/Ñ€/g
+s/\\IeC {\\cyrch }/Ñ/g
+s/\\IeC {\\CYRSH }/Ñ‚/g
+s/\\IeC {\\cyrsh }/Ñƒ/g
+s/\\IeC {\\CYRSHCH }/Ñ„/g
+s/\\IeC {\\cyrshch }/Ñ…/g
+s/\\IeC {\\CYRHRDSN }/Ñ†/g
+s/\\IeC {\\cyrhrdsn }/Ñ‡/g
+s/\\IeC {\\CYRERY }/Ñˆ/g
+s/\\IeC {\\cyrery }/Ñ‰/g
+s/\\IeC {\\CYRSFTSN }/ÑŠ/g
+s/\\IeC {\\cyrsftsn }/Ñ‹/g
+s/\\IeC {\\CYREREV }/ÑŒ/g
+s/\\IeC {\\cyrerev }/Ñ/g
+s/\\IeC {\\CYRYU }/ÑŽ/g
+s/\\IeC {\\cyryu }/Ñ/g
+s/\\IeC {\\CYRYA }/Ñ‘/g
+s/\\IeC {\\cyrya }/Ñ”/g
+}' $IDX | makeindex -i -t $ILG | sed '
+s/Ð/{\\CYRA }/g
+s/Ð‘/{\\cyra }/g
+s/Ð’/{\\CYRB }/g
+s/Ð“/{\\cyrb }/g
+s/Ð”/{\\CYRV }/g
+s/Ð•/{\\cyrv }/g
+s/Ð–/{\\CYRG }/g
+s/Ð—/{\\cyrg }/g
+s/Ð˜/{\\CYRD }/g
+s/Ð™/{\\cyrd }/g
+s/Ðš/{\\CYRE }/g
+s/Ð›/{\\cyre }/g
+s/Ðœ/{\\CYRYO }/g
+s/Ð/{\\cyryo }/g
+s/Ðž/{\\CYRZH }/g
+s/ÐŸ/{\\cyrzh }/g
+s/Ð /{\\CYRZ }/g
+s/Ð¡/{\\cyrz }/g
+s/Ð¢/{\\CYRI }/g
+s/Ð£/{\\cyri }/g
+s/Ð¤/{\\CYRISHRT }/g
+s/Ð¥/{\\cyrishrt }/g
+s/Ð¦/{\\CYRK }/g
+s/Ð§/{\\cyrk }/g
+s/Ð¨/{\\CYRL }/g
+s/Ð©/{\\cyrl }/g
+s/Ðª/{\\CYRM }/g
+s/Ð«/{\\cyrm }/g
+s/Ð¬/{\\CYRN }/g
+s/Ð­/{\\cyrn }/g
+s/Ð®/{\\CYRO }/g
+s/Ð¯/{\\cyro }/g
+s/Ð°/{\\CYRP }/g
+s/Ð±/{\\cyrp }/g
+s/Ð²/{\\CYRR }/g
+s/Ð³/{\\cyrr }/g
+s/Ð´/{\\CYRS }/g
+s/Ðµ/{\\cyrs }/g
+s/Ð¶/{\\CYRT }/g
+s/Ð·/{\\cyrt }/g
+s/Ð¸/{\\CYRU }/g
+s/Ð¹/{\\cyru }/g
+s/Ðº/{\\CYRF }/g
+s/Ð»/{\\cyrf }/g
+s/Ð¼/{\\CYRH }/g
+s/Ð½/{\\cyrh }/g
+s/Ð¾/{\\CYRC }/g
+s/Ð¿/{\\cyrc }/g
+s/Ñ€/{\\CYRCH }/g
+s/Ñ/{\\cyrch }/g
+s/Ñ‚/{\\CYRSH }/g
+s/Ñƒ/{\\cyrsh }/g
+s/Ñ„/{\\CYRSHCH }/g
+s/Ñ…/{\\cyrshch }/g
+s/Ñ†/{\\CYRHRDSN }/g
+s/Ñ‡/{\\cyrhrdsn }/g
+s/Ñˆ/{\\CYRERY }/g
+s/Ñ‰/{\\cyrery }/g
+s/ÑŠ/{\\CYRSFTSN }/g
+s/Ñ‹/{\\cyrsftsn }/g
+s/ÑŒ/{\\CYREREV }/g
+s/Ñ/{\\cyrerev }/g
+s/ÑŽ/{\\CYRYU }/g
+s/Ñ/{\\cyryu }/g
+s/Ñ‘/{\\CYRYA }/g
+s/Ñ”/{\\cyrya }/g
+' | sed '
+s/{\\CYRA }/Ð/g
+s/{\\cyra }/Ð°/g
+s/{\\CYRB }/Ð‘/g
+s/{\\cyrb }/Ð±/g
+s/{\\CYRV }/Ð’/g
+s/{\\cyrv }/Ð²/g
+s/{\\CYRG }/Ð“/g
+s/{\\cyrg }/Ð³/g
+s/{\\CYRD }/Ð”/g
+s/{\\cyrd }/Ð´/g
+s/{\\CYRE }/Ð•/g
+s/{\\cyre }/Ðµ/g
+s/{\\CYRYO }/Ð/g
+s/{\\cyryo }/Ñ‘/g
+s/{\\CYRZH }/Ð–/g
+s/{\\cyrzh }/Ð¶/g
+s/{\\CYRZ }/Ð—/g
+s/{\\cyrz }/Ð·/g
+s/{\\CYRI }/Ð˜/g
+s/{\\cyri }/Ð¸/g
+s/{\\CYRISHRT }/Ð™/g
+s/{\\cyrishrt }/Ð¹/g
+s/{\\CYRK }/Ðš/g
+s/{\\cyrk }/Ðº/g
+s/{\\CYRL }/Ð›/g
+s/{\\cyrl }/Ð»/g
+s/{\\CYRM }/Ðœ/g
+s/{\\cyrm }/Ð¼/g
+s/{\\CYRN }/Ð/g
+s/{\\cyrn }/Ð½/g
+s/{\\CYRO }/Ðž/g
+s/{\\cyro }/Ð¾/g
+s/{\\CYRP }/ÐŸ/g
+s/{\\cyrp }/Ð¿/g
+s/{\\CYRR }/Ð /g
+s/{\\cyrr }/Ñ€/g
+s/{\\CYRS }/Ð¡/g
+s/{\\cyrs }/Ñ/g
+s/{\\CYRT }/Ð¢/g
+s/{\\cyrt }/Ñ‚/g
+s/{\\CYRU }/Ð£/g
+s/{\\cyru }/Ñƒ/g
+s/{\\CYRF }/Ð¤/g
+s/{\\cyrf }/Ñ„/g
+s/{\\CYRH }/Ð¥/g
+s/{\\cyrh }/Ñ…/g
+s/{\\CYRC }/Ð¦/g
+s/{\\cyrc }/Ñ†/g
+s/{\\CYRCH }/Ð§/g
+s/{\\cyrch }/Ñ‡/g
+s/{\\CYRSH }/Ð¨/g
+s/{\\cyrsh }/Ñˆ/g
+s/{\\CYRSHCH }/Ð©/g
+s/{\\cyrshch }/Ñ‰/g
+s/{\\CYRHRDSN }/Ðª/g
+s/{\\cyrhrdsn }/ÑŠ/g
+s/{\\CYRERY }/Ð«/g
+s/{\\cyrery }/Ñ‹/g
+s/{\\CYRSFTSN }/Ð¬/g
+s/{\\cyrsftsn }/ÑŒ/g
+s/{\\CYREREV }/Ð­/g
+s/{\\cyrerev }/Ñ/g
+s/{\\CYRYU }/Ð®/g
+s/{\\cyryu }/ÑŽ/g
+s/{\\CYRYA }/Ð¯/g
+s/{\\cyrya }/Ñ/g
+'  > $IND
