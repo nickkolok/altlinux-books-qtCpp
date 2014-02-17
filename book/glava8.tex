@@ -1,0 +1,435 @@
+\chapter[Строки в языке \Sys{C++}]{Строки в языке \Sys{C++}}\label{ch08}
+В главе дано общее представление о строках в \Sys{C++}. Описана их структура, способы инициализации, возможности ввода-вывода,
+приведены примеры обработки строк и текстов.
+
+\section[Общие сведения о строках в \Sys{C++}]{Общие сведения о строках в \Sys{C++}}\label{ch08:1}
+\index{Строка}\emph{Строка} --- последовательность символов. Для работы с символами в языке \Sys{C++} предусмотрен
+тип данных \Sys{char}. Если в выражении встречается одиночный символ, он должен быть заключен в одинарные
+кавычки. При использовании в выражениях строка заключается в двойные кавычки. Признаком конца строки является нулевой
+символ '\Sys{{\textbackslash}0}'. В \Sys{C++} строки можно описать с помощью массива символов (массив
+элементов типа \Sys{char}), в массиве следует предусмотреть место для хранения признака конца строки
+('\Sys{{\textbackslash}0}').
+
+Например, 
+\begin{lstlisting}
+char s[25]; //`Описана строка из 25 символов.`
+//`Элемент s[25] предназначен для хранения символа конца строки.`
+char s[7]="`\Sys{Привет}`";//`Описана строка из 7 символов и ей присвоено значение.`
+//`Определен массив из 3 строк по 25 байт в каждой.`
+char m[3][25]={"`\Sys{Пример }`", "`\Sys{использования}`", "`\Sys{ строк}`"} 
+\end{lstlisting}
+
+Для работы со строками можно использовать указатели (\Sys{char *}). Адрес первого символа будет начальным
+значением указателя.
+
+Рассмотрим пример объявления и ввода строк.
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+int main()
+{
+char s2[20], *s3, s4[30]; //`Описываем 3 строки, s3 — указатель.`
+cout<<"`\Sys{Введите строку:}`"<<endl;
+cout<<"s2=";cin>>s2; //`Ввод строки s2.`
+cout<<"`\Sys{Была введена строка:}`"<<endl;
+cout<<"s2="<<s2<<endl;
+s3=s4; //`Запись в s3 адреса строки s4. Теперь в указателях s3 и s4` 
+       //`хранится один адрес.`
+cout<<"`\Sys{Введите строку:}`"<<endl;
+cout<<"s3="; cin>>s3; //`Ввод строки s3.`
+cout<<"`\Sys{Была введена строка:}`"<<endl;
+cout<<"s3="<<s3<<endl; //`Вывод на экран s3 и s4,`
+cout<<"`\Sys{Сформирована новая строка:}`"<<endl;
+cout<<"s4="<<s4<<endl;//`s3 и s4 --- одно и тоже.`
+return 0;
+}
+\end{lstlisting}
+
+Если запустить эту программу на выполнение, то в консольном окне приложения будет получен следующий результат.
+\begin{verbatim}
+Введите строку:
+s2=Привет!
+Была введена строка:
+s2=Привет!
+Введите строку:
+s3=Программируем?
+Была введена строка:
+s3=Программируем?
+Сформирована новая строка:
+s4=Программируем?
+\end{verbatim}
+Однако, если во вводимых строках появятся пробелы, программа будет работать не так, как ожидает пользователь:
+\begin{verbatim}
+Введите строку:
+s2=Привет, Вася!
+Была введена строка:
+s2=Привет,
+Введите строку:
+s3=Была введена строка:
+s3=Вася!
+Сформирована новая строка:
+s4=Вася!
+\end{verbatim}
+Дело в том, что функция \Sys{cin} вводит строки до встретившегося пробела. Более универсальной функцией
+являет функция
+
+\Sys{cin.getline(char *s, int n);}
+
+она предназначена для \index{Строки!ввод}\emph{ввода с клавиатуры строки} \Sys{s} с пробелами,
+причем в строке не должно быть более \Sys{n} символов. Например,
+\begin{lstlisting}
+char s[20];
+cout<<"`\Sys{Введите строку:}`"<<endl;
+cout<<"s2="; cin.getline(s,20);
+cout<<"`\Sys{Была введена строка:}`"<<endl;
+cout<<"s2="<<s2<<endl;
+\end{lstlisting}
+
+Результат:
+\begin{verbatim}
+Введите строку:
+s2=Привет, Вася!
+Была введена строка:
+s2=Привет, Вася!
+\end{verbatim}
+
+\section[Операции над строками]{Операции над строками}\label{ch08:2}
+Строку можно обрабатывать как массив символов, используя алгоритмы обработки массивов, или с помощью специальных
+\index{Строки!функции обработки}\emph{функций обработки строк},
+некоторые из которых приведены в таблицах~\ref{ch08:refTable0}--\ref{ch08:refTable1}. 
+
+{\tabcolsep=0.1em\noindent\footnotesize
+\begin{longtable}{|p{0.2\textwidth}|p{0.27\textwidth}|p{0.26\textwidth}|p{0.24\textwidth}|}
+\caption{Функции работы со строками, библиотека \Sys{string.h}}\label{ch08:refTable0}\\
+\hline
+\Emph{Прототип функции} &\Emph{Описание функции} &\Emph{Пример использования} &\Emph{Результат}\\
+\hline \hline
+\endfirsthead
+\multicolumn{4}{c}%
+{{\tablename\ \thetable{} --- продолжение}} \\
+\hline
+\Emph{Прототип функции} &\Emph{Описание функции} &\Emph{Пример использования} &\Emph{Результат}\\
+\hline \hline
+\endhead
+\lstinline!size_t strlen(const char *s)!& Вычисляет длину строки \Sys{s} в байтах &
+\lstinline!char s[80];!\linebreak
+\lstinline!cout<<"s=";!\linebreak
+\lstinline!cin.getline(s,80);!\linebreak
+\lstinline!cout<<"s="<<s<<endl<<"!\Sys{Длина строки}\lstinline!\t"<<strlen(s)<<endl;!&
+\begin{verbatim}
+s=Hello, Russia!
+s=Hello, Russia! 
+Длина строки 14
+\end{verbatim}
+\\\hline
+\lstinline!char *strcat(char *dest, const char *scr)! & Присоединяет строку \Sys{src} в конец строки \Sys{dest}, 
+полученная строка возвращается в качестве  результата &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!cout<<"s2=";!\linebreak
+\lstinline!cin.getline(s2,80);!\linebreak
+\lstinline!cout<<"s="<<strcat(s1,s2);!
+&
+\begin{verbatim}
+s1=Hello, 
+s2=Russia!
+s=Hello, Russia!
+\end{verbatim}
+\\\hline
+\lstinline!char *strcpy(char *dest, const char *scr)!& Копирует строку \Sys{src} в место памяти, на которое указывает \Sys{dest} &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!strcpy(s2,s1);!\linebreak
+\lstinline!cout<<"s2="<<s2;!
+&
+\begin{verbatim}
+s1=Hello,Russia!
+s2=Hello,Russia!
+\end{verbatim}
+\\\hline
+\lstinline!char *strncat(char *dest, const char *dest, size_t maxlen)!&Присоединяет строку \Sys{maxlen} символов строки \Sys{src} в конец строки \Sys{dest} &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!cout<<"s2=";!\linebreak
+\lstinline!cin.getline(s2,80);!\linebreak
+\lstinline!cout<<"s="<<strncat(s1,s2,6);!&
+\begin{verbatim}
+s1=Hello, 
+s2=Russia!
+s=Hello, Russia
+\end{verbatim}
+\\\hline
+\lstinline!char *strncpy(char *dest, const char *scr, size_t maxlen)!&Копирует \Sys{maxlen} символов строки \Sys{src} в место памяти, на которое указывает \Sys{dest} &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!strncpy(s2,s1,5);!\linebreak
+\lstinline!cout<<"s2="<<s2;!&
+\begin{verbatim}
+s1=Hello,Russia!
+s2=Hello
+\end{verbatim}
+\\\hline
+\lstinline!int strcmp(const char *s1, const char *s2)!&
+Сравнивает две строки в лексикографическом порядке с учетом различия прописных и строчных букв, функция возвращает 0,
+если строки совпадают, возвращает $-1$, если \Sys{s1} располагается в упорядоченном по алфавиту порядке
+раньше, чем \Sys{s2}, и 1 в противоположном случае. &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!cout<<"s2=";!\linebreak
+\lstinline!cin.getline(s2,80);!\linebreak
+\lstinline!cout<<strcmp(s1,s2)<<endl;!&
+\begin{verbatim}
+s1=RUSSIA
+s2=Russia
+-1
+\end{verbatim}
+\\\hline
+\lstinline!int strncmp(const char *s1, const char *s2, size_t maxlen)!
+ &Сравнивает \Sys{maxlen} символов двух строк в лексикографическом порядке, функция возвращает 0, если строки
+совпадают, возвращает -1, если \Sys{s1} располагается в упорядоченном по алфавиту порядке раньше, чем
+\Sys{s2}, и 1 --- в  противоположном случае. &
+\lstinline!char s1[80],s2[80];!\linebreak
+\lstinline!cout<<"s1=";!\linebreak
+\lstinline!cin.getline(s1,80);!\linebreak
+\lstinline!cout<<"s2=";!\linebreak
+\lstinline!cin.getline(s2,80);!\linebreak
+\lstinline!cout<<strncmp(s1,s2,6);!
+&
+\begin{verbatim}
+s1=Hello,Russia!
+s2=Hello,
+0
+\end{verbatim}
+\\\hline
+\end{longtable}
+}
+
+
+{\tabcolsep=0.1em\noindent\footnotesize
+\begin{longtable}{|p{0.2\textwidth}|p{0.27\textwidth}|p{0.26\textwidth}|p{0.24\textwidth}|}
+\caption{Функции работы со строками, библиотека \Sys{stdlib.h}}\label{ch08:refTable1}\\
+\hline
+\Emph{Прототип функции} &\Emph{Описание функции} &\Emph{Пример использования} &\Emph{Результат}\\
+\hline \hline
+\endfirsthead
+\multicolumn{4}{c}%
+{{\tablename\ \thetable{} --- продолжение}} \\
+\hline
+\Emph{Прототип функции} &\Emph{Описание функции} &\Emph{Пример использования} &\Emph{Результат}\\
+\hline \hline
+\endhead
+\lstinline!double atof(const char*s)!& Преобразует строку в вещественное число, в случае неудачного преобразования возвращается число 0.0 &
+\lstinline!char a[10];!\linebreak
+\lstinline!cout<<"a=";!\linebreak
+\lstinline!cin>>a;!\linebreak
+\lstinline!cout<<"a="<<atof(a)<<endl;!&
+\begin{verbatim}
+a=23.57
+a=23.57
+\end{verbatim}
+\\\hline
+\lstinline!int atoi(const char*s)! &Преобразует строку в целое число, в случае неудачного преобразования возвращается число 0 &
+\lstinline!char a[10];!\linebreak
+\lstinline!cout<<"a=";!\linebreak
+\lstinline!cin>>a;!\linebreak
+\lstinline!cout<<"a="<<atoi(a)<<endl;!&
+\begin{verbatim}
+a=23
+a=23
+\end{verbatim}
+\\\hline
+\lstinline!long atol(const char*s)!&Преобразует строку в длинное целое число, в случае неудачного преобразования возвращается число 0 &
+\lstinline!char a[10];!\linebreak
+\lstinline!cout<<"a=";!\linebreak
+\lstinline!cin>>a;!\linebreak
+\lstinline!cout<<"a="<<atol(a)<<endl;!&
+\begin{verbatim}
+a=23
+a=23
+\end{verbatim}
+\\\hline
+\end{longtable}
+}
+
+Для преобразования числа в строку можно воспользоваться функцией \Sys{sprintf} из библиотеки
+\Sys{stdio.h}.
+
+\Sys{sprintf(s, s1, s2);}
+
+Она аналогична описанной ранее функции \Sys{printf}, отличие состоит в том, что осуществляется вывод не на
+экран, а в выходную строку~\Sys{s}.
+
+Например, в результате работы следующих команд
+
+\Sys{char str[80];}
+
+\Sys{sprintf (str, \symbol{`\"}\%s \%d \%s\symbol{`\"}, \symbol{`\"}С новым \symbol{`\"}, 2014, \symbol{`\"}годом!!!\symbol{`\"});}
+
+в переменную \Sys{str} будет записана строка \Sys{С новым 2014 годом!!!}.
+
+\section[Тип данных string]{Тип данных \Sys{string}}\label{ch08:3}
+Кроме работы со строками, как с массивом символов, в \Sys{C++} существует специальный тип данных \Sys{string}.
+Для ввода переменных этого типа можно использовать \Sys{cin}\footnote{При работе c командой
+\Sys{cin}, как отмечалось ранее, ввод осуществляется до пробела.} или специальную функцию:
+
+\Sys{getline(cin,s);}
+
+Здесь \Sys{s} --- имя вводимой переменной типа \Sys{string}.
+
+При описании переменной типа \Sys{string} можно сразу присвоить ей значение:
+
+\Sys{string var(s);}
+
+Здесь \Sys{var} --- имя переменной типа \Sys{string}, \Sys{s} --- строковая
+константа. В результате этого оператора создается переменная \Sys{var} типа \Sys{string} и в
+нее записывается значение из строковой константы \Sys{s}. Например,
+
+\Sys{string v(\symbol{`\"}Hello\symbol{`\"});}
+
+Создается строка \Sys{v}, в которую записывается значение \Sys{Hello}.
+
+Доступ к $i$-му элементу строки осуществляется стандартным образом:
+
+\Sys{имя\_строки[номер\_элемента];}
+
+Над строками типа \Sys{string} определены следующие \index{Строки!операции}\emph{операции}:
+
+\begin{itemize}
+\item \emph{присваивания}, например \Sys{s1=s2};
+\item \emph{объединение строк} (\Sys{s1+=s2} или \Sys{s1=s1+s2}) --- добавляет к
+строке \Sys{s1} строку \Sys{s2}, результат хранится в строке \Sys{s1}, например:
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+  string a,b;
+  cout<<"a="; getline(cin,a);
+  cout<<"b="; getline(cin,b);
+  a+=b;
+  cout<<"a="<<a<<endl;
+  return 0;
+}
+\end{lstlisting}
+
+\item \emph{сравнение строк} на основе лексикографического порядка:
+\Sys{s1==s2}, \Sys{s1!=s2},
+\Sys{s1<s2}, \Sys{s1<=s2}, \Sys{s1>s2},
+\Sys{s1>=s2} --- результатом операций сравнения будет логическое значение;
+\end{itemize}
+При \emph{обработке строк }типа \Sys{string} можно использовать следующие
+\index{Строки!функции}функции\footnote{В описанных ниже функциях строки \Sys{s} и \Sys{s1} должны быть типа \Sys{string}.}:
+\begin{description}
+\item[\Sys{s.length()}] --- возвращает длину строки \Sys{s};
+\item[\Sys{s.substr(pos, length)}] --- возвращает подстроку из строки \Sys{s}, начиная с номера
+ \Sys{pos} длиной \Sys{length} символов;
+\item[\Sys{s.empty()}] --- возвращает значение \Sys{true}, если строка \Sys{s} пуста,
+\Sys{false} --- в противном случае;
+\item[\Sys{s.insert(pos, s1)}] --- вставляет строку \Sys{s1} в строку \Sys{s}, начиная с
+позиции \Sys{pos};
+\item[\Sys{s.remove(pos, length)}] --- удаляет из строки s подстроку \Sys{length} длиной
+\Sys{pos} символов;
+\item[\Sys{s.find(s1, pos)}] --- возвращает номер первого вхождения строки \Sys{s1} в строку
+\Sys{s}, поиск начинается с номера \Sys{pos}, параметр \Sys{pos} может
+отсутствовать, в этом случае поиск идет с начала строки;
+\item[\Sys{s.findfirst(s1, pos)}] --- возвращает номер первого вхождения любого символа из строки
+\Sys{s1} в строку \Sys{s}, поиск начинается с номера \Sys{pos}, параметр
+\Sys{pos} может отсутствовать, в этом случае поиск идет с начала строки.
+\end{description}
+
+\prg{Некоторый текст хранится в файле \Sys{text.txt}. Подсчитать
+количество строк и слов в тексте.}{ch08:prg0}
+
+Предлагаем читателю самостоятельно разобраться в приведенном программном коде. 
+\begin{lstlisting}
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <iomanip>
+using namespace std;
+int main()
+{
+  ifstream f;
+  int p,j,i,kol,m,n=0;
+  string S[10];
+  f.open("text.txt");
+  if (f)
+  {
+    while (!f.eof())
+    {
+      getline(f,S[n]);
+      cout<<S[n]<<"\n";
+      n++;
+    }
+    f.close();
+    cout<<endl;
+    cout<<"`\Sys{Количество строк в тексте - }`"<<n<<endl;
+    for (kol=0,i=0;i<n;i++)
+    {
+      m=S[i].length();
+      S[i]+=" ";
+      for (p=0;p<m;)
+      {
+        j=S[i].find(" ",p);
+        if (j!=0) {kol++; p=j+1;}
+        else break;
+      }
+    }
+    cout<<"`\Sys{Количество слов в тексте - }`"<<kol<<endl;
+  }
+  else cout<<"File not found"<<endl;
+  return 0;
+}
+\end{lstlisting}
+Результаты работы программы:
+\begin{verbatim}
+Если видим, что с картины
+Смотрит кто-нибудь на нас,
+Или принц в плаще старинном,
+Или в робе верхолаз,
+Лётчик или балерина,
+Или Колька, твой сосед,
+Обязательно картина
+Называется портрет.
+
+Количество строк в тексте - 8
+Количество слов в тексте - 29
+\end{verbatim}
+
+\section[Задачи для самостоятельного решения]{Задачи для самостоятельного решения}
+Разработать программу на языке \Sys{C++} для следующих заданий:
+
+\begin{enumerate}
+\item Подсчитать количество слов в каждой строке текста.
+\item Подсчитать количество символов в тексте.
+\item Подсчитать количество точек в тексте.
+\item Подсчитать количество пробелов в тексте.
+\item Удалить из теста все пробелы.
+\item Удалить из теста все точки.
+\item Вставить вместо каждого пробела восклицательный знак.
+\item Вставить перед каждым восклицательным знаком вопросительный.
+\item Определить содержит ли текст хотя бы один восклицательный знак и в какой строке.
+\item Подсчитать количество слов в четных строках текста.
+\item Найти номер самой длинной строки текста.
+\item Променять местами первую и последнюю строки текста.
+\item Определить, есть ли в тексте пустые строки.
+\item Определить содержит ли текст хотя бы пару соседних одинаковых строк.
+\item Найти самую короткую строку текста и заменить ее фразой «С новым годом!».
+\item Найти самую длинную строку текста и заменить ее пустой строкой.
+\item Определить количество слов в нечетных строках текста.
+\item Определить количество пробелов в четных строках текста.
+\item Определить количество предложений в тексте, учитывая, что предложение заканчивается точкой, вопросительным или
+восклицательным знаком.
+\item Поменять местами самую длинную и самую короткую строки текста.
+\item Вывести на печать первое предложение текста, учитывая что оно заканчивается точкой.
+\item Определить количество пробелов в нечетных строках текста.
+\item Удалить из теста все восклицательные и вопросительные знаки.
+\item Определить содержит ли текст хотя бы один вопросительный знак и в какой строке.
+\item Добавить в начало каждой строки текста ее номер и пробел.
+\end{enumerate}
