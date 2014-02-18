@@ -34,10 +34,10 @@
 %\usepackage[utf8]{inputenc} %есть в стиле
 
 %\usepackage{listings} % есть в db.sty
-\lstloadlanguages{[LaTeX]TeX,bash,C,C++}
+\lstloadlanguages{[LaTeX]TeX,bash,C,[GNU]C++}
 \lstset{%
  language=[GNU]C++,% выбираем язык по умолчанию
- basicstyle=\footnotesize,% the size of the fonts that are used for the code
+ basicstyle=\scriptsize,%\footnotesize,% the size of the fonts that are used for the code
  escapechar=`,% |«выпадаем» в LTEX|
  extendedchars=true,%false%true,% включаем не латиницу
  showstringspaces=false,         % underline spaces within strings
@@ -46,7 +46,6 @@
  commentstyle=\itshape,% шрифт для комментариев
  stringstyle =\ttfamily,% шрифт для строк
  breaklines=true,%
- basicstyle=\footnotesize,%\small,%
  captionpos=bl,
  inputencoding=utf8
 % inputencoding=utf8x%что-то одно или utf8 или utf8x но однвременно с altlibrary.cls:\RequirePackage[utf8x]{inputenc}
@@ -223,6 +222,17 @@ E-mail: sales@altlinux.ru
 
 
 %%%%% end for octave %%%%%%%
+\makeatletter
+\renewcommand{\verbatim@font}{\ttfamily\scriptsize}
+\makeatother
+%%%%%%%%%%%from memman.pdf %%%%%%
+\newenvironment{scriptverbatim}%
+{\setverbatimfont{\normalfont\ttfamily\scriptsize}%
+\verbatim}%
+{\endverbatim}
+
+%%%%%%%%%%%%end from memman.pdf %%%%%%%%%
+
 \graphicspath{{img}}
 
 %     Modules selectioin and order modelled upon docs-issue-desktop:block.tex
@@ -271,7 +281,7 @@ E-mail: sales@altlinux.ru
 \include{book/glava6}
 \include{book/glava7}
 \include{book/glava8}
-%\include{book/glava9}
+\include{book/glava9}
 %\include{book/glava10}
 %\include{book/glava11}
 %\include{book/glava12}
