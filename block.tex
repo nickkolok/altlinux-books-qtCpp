@@ -33,7 +33,7 @@
 %\usepackage{footmisc}
 %\usepackage[utf8]{inputenc} %есть в стиле
 
-%\usepackage{listings} % есть в db.sty
+\usepackage[final]{listings} % есть в db.sty
 \lstloadlanguages{[LaTeX]TeX,bash,C,[GNU]C++}
 \lstset{%
  language=[GNU]C++,% выбираем язык по умолчанию
@@ -47,6 +47,11 @@
  stringstyle =\ttfamily,% шрифт для строк
  breaklines=true,%
  captionpos=bl,
+ aboveskip=\smallskipamount ,%0pt,
+ belowskip=\smallskipamount ,%0pt,
+ abovecaptionskip=0pt,
+ belowcaptionskip=0pt,
+ breakindent=10pt,
  inputencoding=utf8
 % inputencoding=utf8x%что-то одно или utf8 или utf8x но однвременно с altlibrary.cls:\RequirePackage[utf8x]{inputenc}
 }
@@ -91,8 +96,8 @@
 Сайт книги: \url{http://www.altlinux.org/Books:Qt-C++}
 \smallskip
 
-Книга адресована студентам, преподавателям инженерных и математических
-специальностей, а также научным работникам.
+%Книга адресована студентам, преподавателям инженерных и математических
+%специальностей, а также научным работникам.
 }
 
 \team{%
@@ -282,7 +287,7 @@ E-mail: sales@altlinux.ru
 \include{book/glava7}
 \include{book/glava8}
 \include{book/glava9}
-%\include{book/glava10}
+\include{book/glava10}
 %\include{book/glava11}
 %\include{book/glava12}
 

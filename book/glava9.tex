@@ -619,14 +619,14 @@ z=(-524288,-908093)
 переменными. В качестве примера рассмотрим следующие задачи.
 
 \prg{Написать программу умножения матриц комплексных чисел.
-Матрицы \emph{{A}} и \emph{{B }}\emph{\textup{имеют вид:}}}{ch09:prg3}
+Матрицы $A$ и $B$ имеют вид:}{ch09:prg3}
 {\noindent\scriptsize
-$A=\left(\begin{matrix}1+2\cdot i&2+3\cdot i&3+1.54\cdot i&4-7.2\cdot i\\2+5\cdot i&3+7\cdot i&4+10\cdot i&5+14\cdot
-i\\1.5+3.25\cdot i&1.7-3.94\cdot i&6.23+11.17\cdot i&-4.12+3.62\cdot i\end{matrix}\right)$,
+$A=\left(\begin{array}{rrrr}1+2\cdot i&2+3\cdot i&3+1.54\cdot i&4-7.2\cdot i\\2+5\cdot i&3+7\cdot i&4+10\cdot i&5+14\cdot
+i\\1.5+3.25\cdot i&1.7-3.94\cdot i&6.23+11.17\cdot i&-4.12+3.62\cdot i\end{array}\right)$,
 
-\noindent $B=\left(\begin{matrix}6.23-1.97\cdot i&0.19+0.22\cdot i&0.16+0.28\cdot i&3.4+1.95\cdot i&2.20-0.18\cdot
+\noindent $B=\left(\begin{array}{rrrrr}6.23-1.97\cdot i&0.19+0.22\cdot i&0.16+0.28\cdot i&3.4+1.95\cdot i&2.20-0.18\cdot
 i\\0.22+0.29\cdot i&11+12\cdot i&6.72-1.13\cdot i&16+18\cdot i&34+66\cdot i\\5+1\cdot i&1.4-1.76\cdot i&4.5+2.3\cdot
-i&296+700\cdot i&4.2+1.03\cdot i\\-3.4-2.61\cdot i&1+11\cdot i&2+23\cdot i&3-35\cdot i&4+47\cdot i\end{matrix}\right)$.
+i&296+700\cdot i&4.2+1.03\cdot i\\-3.4-2.61\cdot i&1+11\cdot i&2+23\cdot i&3-35\cdot i&4+47\cdot i\end{array}\right)$.
 }
 
 Пусть исходные данные хранятся в файле \Sys{abc.txt}. %(рис. \ref{ch09:prg5}).
@@ -710,12 +710,12 @@ return 0;
 
 %{%\noindent\scriptsize
 %\setverbatimfont{\normalfont\ttfamily\scriptsize}
-\begin{scriptverbatim}
+\begin{verbatim}
 Матрица C=A*B
 (-8.152,34.598)   (75.8604,91.276)   (199.988,109.93)    (-452.5,2486.99)  (237.974,406.978)
 (51.78,26.61)     (-177.52,190.35)   (-290.01,242.21)    (-5391.95,5813.9) (-986.2,783.76)
 (59.6291,78.3851) (49.9912,-59.0193) (-82.8542,-50.3838) (-5763.7,7803.92) (149.766,-140.709)
-\end{scriptverbatim}
+\end{verbatim}
 %}
 
 
@@ -724,11 +724,11 @@ $B$. Необходимо вычислить матрицу  $A^{-1}$  обра�
 $|A|$  матрицы  $A$  и решить матричное уравнение  $A\cdot X=B$, где  $X=A^{-1}\cdot B$. Матрицы
 $A$ и $B$ имеют вид:}{ch09:prg4}
 
- $A=\left(\begin{matrix}1+2\cdot i&2+3\cdot i&3+1.54\cdot i\\2+5\cdot i&3+7\cdot i&4+10\cdot i\\1.5+3.25\cdot
-i&1.7-3.94\cdot i&6.23+11.17\cdot i\end{matrix}\right)$,
+ $A=\left(\begin{array}{rrr}1+2\cdot i&2+3\cdot i&3+1.54\cdot i\\2+5\cdot i&3+7\cdot i&4+10\cdot i\\1.5+3.25\cdot
+i&1.7-3.94\cdot i&6.23+11.17\cdot i\end{array}\right)$,
 
- $B=\left(\begin{matrix}1.5+3.25\cdot i&1.7-9.34\cdot i&6.23+11.17\cdot i\\0.11+8.22\cdot i&0.34-18.21\cdot i&1-7\cdot
-i\\1+5\cdot i&7-13\cdot i&12+89\cdot i\end{matrix}\right)$.
+ $B=\left(\begin{array}{rrr}1.5+3.25\cdot i&1.7-9.34\cdot i&6.23+11.17\cdot i\\0.11+8.22\cdot i&0.34-18.21\cdot i&1-7\cdot
+i\\1+5\cdot i&7-13\cdot i&12+89\cdot i\end{array}\right)$.
 
 Для хранения исходных данных создадим текстовый файл \Sys{abc2.txt} % (рис. \ref{ch09:prg7}).
 следующего содержания:
