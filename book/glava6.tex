@@ -681,6 +681,7 @@ $C_{i,j}=A_{i,j}+B_{i,j}$ (вычитанием  $C_{i,j}=A_{i,j}-B_{i,j}$) со
 $$\left(\begin{matrix}a_{0,0}&a_{0,1}&a_{0,2}\\a_{1,0}&a_{1,1}&a_{1,2}\\a_{2,0}&a_{2,1}&a_{2,2}\end{matrix}\right)\cdot
 \left(\begin{matrix}b_{0,0}&b_{0,1}\\b_{1,0}&b_{1,1}\\b_{2,0}&b_{2,1}\end{matrix}\right)$$ 
 Воспользовавшись правилом «строка на столбец», получим матрицу: 
+
 {\noindent%\footnotesize 
 $\left(\begin{matrix}c_{0,0}&c_{0,1}\\c_{1,0}&c_{1,1}\\c_{2,0}&c_{2,1}\end{matrix}\right)=$\\
 $=\left(\begin{matrix}a_{0,0}\cdot
@@ -689,6 +690,7 @@ b_{2,1}\\a_{1,0}\cdot b_{0,0}+a_{1,1}\cdot b_{1,2}+a_{1,2}\cdot b_{2,1}&a_{1,0}\
 b_{1,1}+a_{1,2}\cdot b_{2,1}\\a_{2,0}\cdot b_{0,0}+a_{2,1}\cdot b_{1,0}+a_{2,2}\cdot b_{2,0}&a_{2,0}\cdot
 b_{0,1}+a_{2,1}\cdot b_{1,1}+a_{2,2}\cdot b_{2,1}\end{matrix}\right)$
 }
+
 Произведением матриц $A(N,M)$ и $B(M,L)$ является матрица $C(N,L)$, каждый элемент которой  $C_{i,j}$ вычисляется по формуле:
 
  $C_{i,j}=\sum\limits_{k=0}^{M-1}A_{i,k}B_{k,j}$, где $i = 0, N-1$ и $j = 0, L-1$. 
@@ -1703,17 +1705,17 @@ $C(n\times n)$ найти значение выражения  $B=A^2-C^T$
 $B(n\times n)$ найти значение выражения  $A=(B^T+C)^2$  
 
 %%%% рис 6.18 и 6.19 бок о бок
-\begin{figure}[H]
+\begin{figure}[h]
 \begin{floatrow}
 \floatbox{figure}[.45\textwidth][\FBheight][t]
 {\caption{}
 \label{ch06:refDrawing17}}
-{\includegraphics[width=0.45\textwidth,keepaspectratio]{img/ris_6_18}}\hspace*{0.05\textwidth}
+{\includegraphics[width=0.25\textwidth,keepaspectratio]{img/ris_6_18}}\hspace*{0.05\textwidth}
 %
 \floatbox{figure}[.45\textwidth][\FBheight][b]
 {\caption{}
 \label{ch06:refDrawing18}}
-{\includegraphics[width=0.45\textwidth,keepaspectratio]{img/ris_6_19}}
+{\includegraphics[width=0.25\textwidth,keepaspectratio]{img/ris_6_19}}
 \end{floatrow}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -1781,11 +1783,6 @@ $C(n\times n)$ найти значение выражения  $A=\frac{1}{2}\cd
 \end{figure}%
 
 
-%\centering \includegraphics[scale=0.33]{glava6-img021}
-%captionof{figure}[]{}
-%label{ch06:refDrawing19}
-%par}
-
 
 \item В двумерном массиве $A$, состоящем из $n\times n$ целых чисел вычислить: 
 
@@ -1817,10 +1814,6 @@ $C(n\times n)$ найти значение выражения  $A=\frac{1}{2}\cd
 Для матрицы $C(n\times n)$ и матрицы того же типа и размерности $B(n\times n)$
 найти значение выражения  $A=(B-C)\cdot (B+C)$.
 
-%{\centering \includegraphics[scale=0.33]{glava6-img022}
-%\captionof{figure}[]{}
-%\label{ch06:refDrawing20}
-%\par}
 
 \item В двумерном массиве $A$, состоящем из $n\times n$ целых чисел вычислить:
 
