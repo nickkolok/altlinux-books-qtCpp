@@ -1,5 +1,9 @@
 \begin{theindex}
 
+  \item Valgrind, 384
+
+  \indexspace
+
   \item Алгоритм, 44, 329
     \subitem линейный, 45
     \subitem основные конструкции, 45
@@ -35,6 +39,8 @@
   \item Выражение, 23
   \item Горячие клавиши
     \subitem \Sys{Qt Creator}, 339
+  \item Динамически распределяемая память, 
+		384
   \item Директивы, 33
   \item Дочерние виджеты, 360
   \item Запись файла с использованием \Sys{Qt}, 
@@ -55,9 +61,12 @@
     \subitem QAbstractButton, 375
     \subitem QApplication, 359
     \subitem QCheckBox, 371, 375
+    \subitem QCloseEvent, 387
+    \subitem QColor, 396
     \subitem QComboBox, 376
     \subitem QDateTimeEdit, 376
     \subitem QDial, 376
+    \subitem QEvent, 387, 388
     \subitem QFile, 355
     \subitem QFlags, 356
     \subitem QFont, 360
@@ -67,31 +76,46 @@
     \subitem QHash, 353, 355
     \subitem QHBoxLayout, 363
     \subitem QIODevice, 355
+    \subitem QKeyEvent, 387
     \subitem QLabel, 359, 376
     \subitem QLCDNumber, 376
     \subitem QLineEdit, 376
     \subitem QLinkedList, 355
     \subitem QList, 353, 355
     \subitem QMap, 353, 355
+    \subitem QMouseEvent, 387
     \subitem QMultiHash, 355
     \subitem QMultiMap, 355
+    \subitem QObject, 378, 383
+    \subitem QPaintDevice, 395
+    \subitem QPainter, 395
+    \subitem QPainterPath, 395
+    \subitem QPaintEvent, 387
+    \subitem QPen, 396
+    \subitem QPixmap, 381, 383
+    \subitem QPoint, 395
     \subitem QProgressBar, 376
     \subitem QPushButton, 375
     \subitem QQueue, 355
+    \subitem QRadioButton, 375
+    \subitem QRect, 396
+    \subitem QResizeEvent, 387
     \subitem QScrollBar, 376
     \subitem QSet, 355
     \subitem QSignalMapper, 373
-    \subitem QSize, 367, 368
+    \subitem QSize, 367, 368, 396
     \subitem QSlider, 377
     \subitem QStack, 355
     \subitem QString, 351
     \subitem QStringList, 352
     \subitem QTabWidget, 376
     \subitem QTextStream, 357
+    \subitem QTimerEvent, 387
     \subitem QToolBox, 376
+    \subitem QToolButton, 375
     \subitem QVBoxLayout, 363
     \subitem QVector, 355
-    \subitem QWidget, 359, 375
+    \subitem QWidget, 359, 375, 395
     \subitem абстрактный, 305
     \subitem базовый, 275
     \subitem деструктор, 279
@@ -125,11 +149,13 @@
   \item Кроссплатформенная программа, 334
   \item Макрос
     \subitem foreach, 354
+    \subitem Q\_PROPERTY, 392
     \subitem QT\_NO\_DEBUG\_OUTPUT, 350
     \subitem QT\_NO\_WARNING\_OUTPUT, 350
   \item Манипулятор, 233
     \subitem endl, 233
   \item Массив, 21, 134
+  \item Метаобъект, 378
   \item Метод Гаусса
     \subitem вычисление обратной матрицы, 213
     \subitem вычисление определителя, 217
@@ -149,6 +175,7 @@
   \item Объект, 273
     \subitem инкапсуляция, 274
     \subitem полиморфизм, 275
+  \item Объектная иерархия, 383
   \item Операнд, 23
   \item Оператор
     \subitem delete, 139
@@ -216,12 +243,14 @@
   \item Расширение файла
     \subitem .pro, 344
   \item Рекурсия, 121
-  \item Родительский виджет, 360
+  \item Родительский виджет, 360, 383
+  \item Свойства, 392
   \item Сигналы, 370, 372, 374
   \item Сигнально-слотовые соединения, 369
     \subitem автоматические, 374
   \item Слоты, 370, 372, 374
-    \subitem cоздание, 372
+    \subitem cоздание, 372, 394
+  \item События, 386
   \item Создание
     \subitem нового класса, 361
     \subitem оконного проекта, 340
@@ -259,6 +288,7 @@
     \subitem разадресация, 29
     \subitem скрытый, 293
     \subitem сложение с константой, 30
+  \item Утечки памяти, 384
   \item Файл
     \subitem make-файл, 346
     \subitem двоичный, 241
@@ -272,6 +302,7 @@
     \subitem удаление, 242
     \subitem формы, 342
     \subitem чтение, 235, 241, 242
+  \item Фильтр событий, 388, 391
   \item Флаги
     \subitem Qt::Alligment, 367
   \item Функции, 31
@@ -301,6 +332,7 @@
     \subitem фактические параметры, 104
     \subitem формальные параметры, 104
     \subitem шаблон, 125
+  \item Цикл обработки событий, 386
 
   \indexspace
 
