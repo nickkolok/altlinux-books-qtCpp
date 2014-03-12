@@ -245,11 +245,6 @@ E-mail: sales@altlinux.ru
 \tightlists
 \midsloppy
 
-%\finalhyphendemerits=10000
-
-%\gdef\appendixname{%
-%    {\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}%
-%\gdef\appendixtocname{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
 
 \makeatletter
 \renewcommand{\@memb@bsec}{\section*{\bibname}\prebibhook}
@@ -260,7 +255,7 @@ E-mail: sales@altlinux.ru
 \setlength{\belowcaptionskip}{0pt}
 \newcommand{\EN}[1]{\foreignlanguage{english}{#1}}
 
-%\includeonly{book/intro,book/glava4}
+%\includeonly{book/intro,book/glava5}
 \begin{document}
 
 %%%%%%%%%%
@@ -297,24 +292,28 @@ E-mail: sales@altlinux.ru
 \include{book/glava12}
 \include{book/glava13}
 \include{book/glava14}
+\include{book/glava15}
 %\show\bibname
 %\show\nobibintoc
-\renewcommand{\bibname}{\Emph{Список литературы}}
-\backmatter
-\input{book/bibliography}
 
 %\def\appendixtocname{Приложения}
 %\def\appendixpagename{\sffamily Приложения}
-%\def\appendixname{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
+\def\appendixname{{\cyr\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}}
 %\renewcommand*{\cftappendixname}{\appendixname~}
-%\appendix
+\appendix
 %%% Добавочная страница Приложения и соответствующая запись в TOC
 %\appendixpage*
 %\addappheadtotoc
 
 %\appendixname %%%%% печатает слово "Приложение" в тексте книги
 %\addcontentsline{toc}{Приложения}
+%\renewcommand{\thechapter}{}
+\input{book/appendix.tex}
 
+\backmatter
+\input{book/about.tex}
+\renewcommand{\bibname}{\Emph{Список литературы}}
+\input{book/bibliography}
 \clearpage
 %\makeindex
 %\clearpage
