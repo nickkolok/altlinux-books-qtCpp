@@ -85,7 +85,7 @@
 }
 \annotation{%
 Книга является учебником по алгоритмизации и программированию на \Sys{С++} и пособием по разработке визуальных приложений в
-среде \Sys{QT Creator}. Также в книге описаны среда программирования \Sys{Qt Creator}, редактор \Sys{Geany}, кроссплатформенная билиотека
+среде \Sys{Qt Creator}. Также в книге описаны среда программирования \Sys{Qt Creator}, редактор \Sys{Geany}, кроссплатформенная билиотека
 построения графиков \Sys{MathGL}. При чтении книги не требуется предварительного знакомства с программированием.
 
 Издание предназначено для студентов, аспирантов и преподавателей вузов, а также для всех, кто изучает программирование
@@ -308,10 +308,11 @@ E-mail: sales@altlinux.ru
 %\appendixname %%%%% печатает слово "Приложение" в тексте книги
 %\addcontentsline{toc}{Приложения}
 %\renewcommand{\thechapter}{}
+\renewcommand{\theprog}{\Alph{chapter}.\arabic{prog}}
 \input{book/appendix.tex}
-
+\input{book/appendix_b.tex}
 \backmatter
-\input{book/about.tex}
+%\input{book/about.tex}
 \renewcommand{\bibname}{\Emph{Список литературы}}
 \input{book/bibliography}
 \clearpage

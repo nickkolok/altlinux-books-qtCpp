@@ -1,367 +1,367 @@
 \begin{theindex}
 
-  \item Valgrind, 385
+  \item Valgrind, 378
 
   \indexspace
 
-  \item Алгоритм, 45, 330
-    \subitem линейный, 46
-    \subitem основные конструкции, 46
+  \item Алгоритм, 44, 323
+    \subitem линейный, 45
+    \subitem основные конструкции, 45
     \subitem Поиск максимального (минимального) элемента массива и номера, 
-		146
-    \subitem Произведение элементов массива, 
 		144
-    \subitem разветвляющийся, 46
+    \subitem Произведение элементов массива, 
+		142
+    \subitem разветвляющийся, 45
     \subitem Сортировка элементов массива, 
-		162
-    \subitem Сумма элементов массива, 143
-    \subitem Удаление элемента из массива, 156
-    \subitem цикл с параметром, 68
-    \subitem цикл с постусловием, 67
-    \subitem цикл с предусловием, 66
-    \subitem циклический, 46, 65
+		158
+    \subitem Сумма элементов массива, 142
+    \subitem Удаление элемента из массива, 153
+    \subitem цикл с параметром, 67
+    \subitem цикл с постусловием, 66
+    \subitem цикл с предусловием, 64
+    \subitem циклический, 45, 64
   \item Библиотека
-    \subitem complex, 262
-    \subitem iostream, 8, 262
-    \subitem math.h, 17, 262
-    \subitem комплексных чисел, 262
-      \subsubitem операции с массивами, 264
-      \subsubitem определение переменной, 262
-      \subsubitem организация ввода-вывода, 262
-      \subsubitem основные функции, 263
-  \item Блок-схема, 45
+    \subitem complex, 254
+    \subitem iostream, 8, 254
+    \subitem math.h, 16, 254
+    \subitem MathGL, 425
+    \subitem комплексных чисел, 254
+      \subsubitem операции с массивами, 256
+      \subsubitem определение переменной, 254
+      \subsubitem организация ввода-вывода, 254
+      \subsubitem основные функции, 255
+  \item Блок-схема, 44
   \item Виджет
-    \subitem позиция и размер, 369
-  \item Виджеты, 335, 360
-  \item Виджеты верхнего уровня, 362
-  \item Виджеты-контейнеры, 376
-  \item Виртуальный метод, 303
-  \item Выражение, 24
+    \subitem позиция и размер, 362
+  \item Виджеты, 328, 353
+  \item Виджеты верхнего уровня, 355
+  \item Виджеты-контейнеры, 369
+  \item Виртуальный метод, 295
+  \item Выражение, 23
   \item Горячие клавиши
-    \subitem \Sys{Qt Creator}, 340
+    \subitem \Sys{Qt Creator}, 333
   \item Динамически распределяемая память, 
-		385
-  \item Директивы, 34
-  \item Дочерние виджеты, 361
+		378
+  \item Директивы, 33
+  \item Дочерние виджеты, 354
   \item Запись файла с использованием \Sys{Qt}, 
-		358
-  \item Идентификатор, 18
+		351
+  \item Идентификатор, 17
   \item Инструменты Qt
-    \subitem \Sys{Qt Assistant}, 338
-    \subitem \Sys{Qt Creator}, 339
-    \subitem qmake, 340, 347
-    \subitem Qt Designer, 343
+    \subitem \Sys{Qt Assistant}, 331
+    \subitem \Sys{Qt Creator}, 332
+    \subitem qmake, 333, 340
+    \subitem Qt Designer, 336
   \item Интерпретатор, 10
-  \item Исключение, 312
-    \subitem индикатор, 312
-    \subitem обработчик, 312
-  \item Итератор, 328
-  \item Класс, 275
-    \subitem \Sys{QMainWindow}, 343
-    \subitem QAbstractButton, 376
-    \subitem QAction, 400, 403, 407
-    \subitem QApplication, 360, 411
-    \subitem QCheckBox, 372, 376
-    \subitem QCloseEvent, 388
-    \subitem QColor, 397
-    \subitem QColorDialog, 408
-    \subitem QComboBox, 377
-    \subitem QDateTimeEdit, 377
-    \subitem QDial, 377
-    \subitem QDialog, 399, 415
-    \subitem QDockWidget, 400
-    \subitem QEvent, 388, 389
-    \subitem QFile, 356
-    \subitem QFileDialog, 408
-    \subitem QFlags, 357
-    \subitem QFont, 361
-    \subitem QFontDialog, 408
-    \subitem QFrame, 376
-    \subitem QGridLayout, 364, 366, 367
-    \subitem QGroupBox, 377
-    \subitem QHash, 354, 356
-    \subitem QHBoxLayout, 364
-    \subitem QIcon, 413
-    \subitem QInputDialog, 408
-    \subitem QIODevice, 356
-    \subitem QKeyEvent, 388
-    \subitem QKeySequence, 406
-    \subitem QLabel, 360, 377
-    \subitem QLCDNumber, 377
-    \subitem QLineEdit, 377
-    \subitem QLinkedList, 356
-    \subitem QList, 354, 356
-    \subitem QMainWindow, 399
-    \subitem QMap, 354, 356
-    \subitem QMessageBox, 408, 411
-    \subitem QMouseEvent, 388
-    \subitem QMultiHash, 356
-    \subitem QMultiMap, 356
-    \subitem QObject, 379, 384
-    \subitem QPaintDevice, 396
-    \subitem QPainter, 396
-    \subitem QPainterPath, 396
-    \subitem QPaintEvent, 388
-    \subitem QPen, 397
-    \subitem QPixmap, 382, 384
-    \subitem QPoint, 396
-    \subitem QProgressBar, 377
-    \subitem QPushButton, 376
-    \subitem QQueue, 356
-    \subitem QRadioButton, 376
-    \subitem QRect, 397
-    \subitem QResizeEvent, 388
-    \subitem QScrollBar, 377
-    \subitem QSet, 356
-    \subitem QSettings, 418
-    \subitem QSignalMapper, 374
-    \subitem QSize, 368, 369, 397
-    \subitem QSlider, 378
-    \subitem QStack, 356
-    \subitem QStatusBar, 400
-    \subitem QString, 352
-    \subitem QStringList, 353
-    \subitem QTabWidget, 377
-    \subitem QTextStream, 358
-    \subitem QTimerEvent, 388
-    \subitem QToolBox, 377
-    \subitem QToolButton, 376
-    \subitem QVBoxLayout, 364
-    \subitem QVector, 356
-    \subitem QWidget, 360, 376, 396, 399
-    \subitem абстрактный, 306
-    \subitem базовый, 276
-    \subitem деструктор, 280
-    \subitem дочерний, 276
-    \subitem конструктор, 280
-    \subitem метод, 278
-    \subitem модификаторы доступа, 300
-    \subitem модификаторы наследования, 300
-    \subitem наследование, 276, 299
-    \subitem переменная-член класса, 277
-    \subitem производный, 276
-    \subitem родительский, 276
-    \subitem свойство, 277
-    \subitem шаблон класса, 322
-  \item Ключевые слова, 18
-  \item Комментарии, 18
+  \item Исключение, 304
+    \subitem индикатор, 304
+    \subitem обработчик, 304
+  \item Итератор, 321
+  \item Класс, 267
+    \subitem \Sys{QMainWindow}, 336
+    \subitem QAbstractButton, 369
+    \subitem QAction, 393, 396, 400
+    \subitem QApplication, 353, 404
+    \subitem QCheckBox, 365, 369
+    \subitem QCloseEvent, 381
+    \subitem QColor, 390
+    \subitem QColorDialog, 401
+    \subitem QComboBox, 370
+    \subitem QDateTimeEdit, 370
+    \subitem QDial, 370
+    \subitem QDialog, 392, 408
+    \subitem QDockWidget, 393
+    \subitem QEvent, 381, 382
+    \subitem QFile, 349
+    \subitem QFileDialog, 401
+    \subitem QFlags, 350
+    \subitem QFont, 354
+    \subitem QFontDialog, 401
+    \subitem QFrame, 369
+    \subitem QGridLayout, 357, 359, 360
+    \subitem QGroupBox, 370
+    \subitem QHash, 347, 349
+    \subitem QHBoxLayout, 357
+    \subitem QIcon, 406
+    \subitem QInputDialog, 401
+    \subitem QIODevice, 349
+    \subitem QKeyEvent, 381
+    \subitem QKeySequence, 399
+    \subitem QLabel, 353, 370
+    \subitem QLCDNumber, 370
+    \subitem QLineEdit, 370
+    \subitem QLinkedList, 349
+    \subitem QList, 347, 349
+    \subitem QMainWindow, 392
+    \subitem QMap, 347, 349
+    \subitem QMessageBox, 401, 404
+    \subitem QMouseEvent, 381
+    \subitem QMultiHash, 349
+    \subitem QMultiMap, 349
+    \subitem QObject, 372, 377
+    \subitem QPaintDevice, 389
+    \subitem QPainter, 389
+    \subitem QPainterPath, 389
+    \subitem QPaintEvent, 381
+    \subitem QPen, 390
+    \subitem QPixmap, 375, 377
+    \subitem QPoint, 389
+    \subitem QProgressBar, 370
+    \subitem QPushButton, 369
+    \subitem QQueue, 349
+    \subitem QRadioButton, 369
+    \subitem QRect, 390
+    \subitem QResizeEvent, 381
+    \subitem QScrollBar, 370
+    \subitem QSet, 349
+    \subitem QSettings, 411
+    \subitem QSignalMapper, 367
+    \subitem QSize, 361, 362, 390
+    \subitem QSlider, 371
+    \subitem QStack, 349
+    \subitem QStatusBar, 393
+    \subitem QString, 345
+    \subitem QStringList, 346
+    \subitem QTabWidget, 370
+    \subitem QTextStream, 351
+    \subitem QTimerEvent, 381
+    \subitem QToolBox, 370
+    \subitem QToolButton, 369
+    \subitem QVBoxLayout, 357
+    \subitem QVector, 349
+    \subitem QWidget, 353, 369, 389, 392
+    \subitem абстрактный, 298
+    \subitem базовый, 268
+    \subitem деструктор, 272
+    \subitem дочерний, 268
+    \subitem конструктор, 272
+    \subitem метод, 270
+    \subitem модификаторы доступа, 292
+    \subitem модификаторы наследования, 292
+    \subitem наследование, 268, 291
+    \subitem переменная-член класса, 269
+    \subitem производный, 268
+    \subitem родительский, 268
+    \subitem свойство, 269
+    \subitem шаблон класса, 314
+  \item Ключевые слова, 17
+  \item Комментарии, 17
   \item Компилятор, 10
-  \item Компиляция проекта, 347
-  \item Комплект (Kit), 339
-  \item Компоновкщик, 364
+  \item Компиляция проекта, 340
+  \item Комплект (Kit), 332
+  \item Компоновкщик, 357
   \item Консольное приложение
     \subitem запуск, 13
     \subitem создание, 13
-  \item Консольный проект, 350
-  \item Константа, 22
-    \subitem описание, 22
+  \item Консольный проект, 343
+  \item Константа, 21
+    \subitem описание, 21
   \item Конструктор
-    \subitem копирования, 293
-  \item Контейнер, 327
-  \item Контейнерные классы \Sys{Qt}, 353
-  \item Кроссплатформенная программа, 335
+    \subitem копирования, 285
+  \item Контейнер, 320
+  \item Контейнерные классы \Sys{Qt}, 346
+  \item Кроссплатформенная программа, 328
   \item Макрос
-    \subitem foreach, 355
-    \subitem Q\_PROPERTY, 393
-    \subitem QT\_NO\_DEBUG\_OUTPUT, 351
-    \subitem QT\_NO\_WARNING\_OUTPUT, 351
-  \item Манипулятор, 234
-    \subitem endl, 234
-  \item Массив, 22, 135
-  \item Метаобъект, 379
+    \subitem foreach, 348
+    \subitem Q\_PROPERTY, 386
+    \subitem QT\_NO\_DEBUG\_OUTPUT, 344
+    \subitem QT\_NO\_WARNING\_OUTPUT, 344
+  \item Манипулятор, 227
+    \subitem endl, 227
+  \item Массив, 21, 134
+  \item Метаобъект, 372
   \item Метод Гаусса
-    \subitem вычисление обратной матрицы, 214
-    \subitem вычисление определителя, 218
+    \subitem вычисление обратной матрицы, 207
+    \subitem вычисление определителя, 210
     \subitem решение систем линейных уравнений, 
-		206
-  \item Модальность, 399
+		200
+  \item Модальность, 392
   \item Модули Qt
-    \subitem дополнительные (Add-On), 337
-    \subitem основные (\EN{Essentials}), 336
+    \subitem дополнительные (Add-On), 330
+    \subitem основные (\EN{Essentials}), 329
   \item Наследование
-    \subitem множественное, 304
+    \subitem множественное, 296
   \item Настройка
-    \subitem Shadow Build, 349
-    \subitem версии \Sys{Qt}, 340
-    \subitem компилятора, 340
-    \subitem комплектов, 340
-    \subitem очистки проекта, 349
-  \item Объект, 274
-    \subitem инкапсуляция, 275
-    \subitem полиморфизм, 276
-  \item Объектная иерархия, 384
-  \item Операнд, 24
+    \subitem Shadow Build, 342
+    \subitem версии \Sys{Qt}, 333
+    \subitem компилятора, 333
+    \subitem комплектов, 333
+    \subitem очистки проекта, 342
+  \item Объект, 266
+    \subitem инкапсуляция, 267
+    \subitem полиморфизм, 268
+  \item Объектная иерархия, 377
+  \item Операнд, 23
   \item Оператор
-    \subitem delete, 140
-    \subitem new, 139
-    \subitem ввода, 232
-    \subitem вывода, 232
-    \subitem разветвляющийся, 47
-    \subitem составной, 47
-    \subitem условный, 47
-    \subitem цикл с параметром, 68
-    \subitem цикл с постусловием, 67
-    \subitem цикл с предусловием, 66
-    \subitem циклический, 65
-  \item Операции, 24
-    \subitem арифметические, 26, 31
-    \subitem бинарные, 24
-    \subitem битовой арифметики, 27
-    \subitem декремента, 27
-    \subitem инкремента, 27
-    \subitem логические, 29
-    \subitem множественного присваивания, 26
-    \subitem отношения, 29
-    \subitem получение адреса, 30
-    \subitem преобразования типа, 30
-    \subitem присваивания, 25, 31
-    \subitem разадресации, 30
-    \subitem составного присваивания, 26
-    \subitem унарные, 24
-    \subitem условная, 29
-    \subitem целочисленной арифметики, 27
+    \subitem delete, 138
+    \subitem new, 138
+    \subitem ввода, 225
+    \subitem вывода, 225
+    \subitem разветвляющийся, 46
+    \subitem составной, 46
+    \subitem условный, 46
+    \subitem цикл с параметром, 67
+    \subitem цикл с постусловием, 66
+    \subitem цикл с предусловием, 64
+    \subitem циклический, 64
+  \item Операции, 23
+    \subitem арифметические, 25, 30
+    \subitem бинарные, 23
+    \subitem битовой арифметики, 26
+    \subitem декремента, 26
+    \subitem инкремента, 26
+    \subitem логические, 28
+    \subitem множественного присваивания, 25
+    \subitem отношения, 28
+    \subitem получение адреса, 29
+    \subitem преобразования типа, 29
+    \subitem присваивания, 24, 30
+    \subitem разадресации, 29
+    \subitem составного присваивания, 25
+    \subitem унарные, 23
+    \subitem условная, 28
+    \subitem целочисленной арифметики, 26
   \item Панель
-    \subitem присоединяемая, 400
-    \subitem статуса, 400
-  \item Перегрузка операторов, 285
-  \item Передача параметров, 105
-    \subitem по адресу, 105
-    \subitem по значению, 105
-  \item Переменная, 19
-    \subitem глобальная, 35, 104
-    \subitem значение, 19
-    \subitem имя, 19
-    \subitem локальная, 35, 104
-    \subitem описание, 19
+    \subitem присоединяемая, 393
+    \subitem статуса, 393
+  \item Перегрузка операторов, 277
+  \item Передача параметров, 104
+    \subitem по адресу, 104
+    \subitem по значению, 104
+  \item Переменная, 18
+    \subitem глобальная, 34, 103
+    \subitem значение, 18
+    \subitem имя, 18
+    \subitem локальная, 34, 103
+    \subitem описание, 18
   \item Переменные qmake
-    \subitem CONFIG, 347
-    \subitem DEFINES, 347, 411
-    \subitem DESTDIR, 347
-    \subitem FORMS, 347
-    \subitem HEADERS, 347
-    \subitem INCLUDEPATH, 347
-    \subitem LIBS, 347, 421
-    \subitem PWD, 421
-    \subitem QT, 347
-    \subitem RESOURCES, 347
-    \subitem SOURCES, 346, 347
-    \subitem TARGET, 347
-    \subitem TEMPLATE, 347
+    \subitem CONFIG, 340
+    \subitem DEFINES, 340, 404
+    \subitem DESTDIR, 340
+    \subitem FORMS, 340
+    \subitem HEADERS, 340
+    \subitem INCLUDEPATH, 340
+    \subitem LIBS, 340, 413
+    \subitem PWD, 414
+    \subitem QT, 340
+    \subitem RESOURCES, 340
+    \subitem SOURCES, 339, 340
+    \subitem TARGET, 340
+    \subitem TEMPLATE, 340
   \item Перечисления
-    \subitem QSizePolicy::Policy, 368
-    \subitem Qt::ConnectionType, 371
-  \item Подпрограмма, 101
-  \item Позднее связывание, 303
-  \item Позиция и размер виджета, 361
-  \item Политики размера (size policies), 368
-  \item Потоки, 236
-  \item Программа, 34
-    \subitem структура, 34
-  \item Программная платформа, 335
+    \subitem QSizePolicy::Policy, 361
+    \subitem Qt::ConnectionType, 364
+  \item Подпрограмма, 100
+  \item Позднее связывание, 295
+  \item Позиция и размер виджета, 354
+  \item Политики размера (size policies), 361
+  \item Потоки, 229
+  \item Программа, 33
+    \subitem структура, 10, 33
+  \item Программная платформа, 328
   \item Расширение файла
-    \subitem .pro, 345
-  \item Редактор форм, 401
-  \item Рекурсия, 122
-  \item Ресурсы, 412
-  \item Родительский виджет, 361, 384
-  \item Свойства, 393
-  \item Сигналы, 371, 373, 375
-  \item Сигнально-слотовые соединения, 370
-    \subitem автоматические, 375
-  \item Слоты, 371, 373, 375
-    \subitem cоздание, 373, 395
-  \item События, 387
+    \subitem .pro, 338
+  \item Редактор форм, 394
+  \item Рекурсия, 121
+  \item Ресурсы, 405
+  \item Родительский виджет, 354, 377
+  \item Свойства, 386
+  \item Сигналы, 364, 366, 368
+  \item Сигнально-слотовые соединения, 363
+    \subitem автоматические, 368
+  \item Слоты, 364, 366, 368
+    \subitem cоздание, 366, 388
+  \item События, 380
   \item Создание
-    \subitem Класса формы Qt Designer, 414
-    \subitem нового класса, 362
-    \subitem оконного проекта, 341
+    \subitem Класса формы Qt Designer, 407
+    \subitem нового класса, 355
+    \subitem оконного проекта, 334
     \subitem проекта с графическим интерфейсом, 
-		364
-    \subitem проектного файла, 345
-    \subitem пустого проекта, 345, 360
-    \subitem файла исходных текстов, 346
+		357
+    \subitem проектного файла, 338
+    \subitem пустого проекта, 338, 353
+    \subitem файла исходных текстов, 339
   \item Среда~программирования \Sys{Qt~Creator}, 
 		11
-  \item Строка, 23, 248
+  \item Строка, 22, 240
   \item Строки
-    \subitem ввод, 249
-    \subitem операции, 252
-    \subitem функции, 252
-    \subitem функции обработки, 249
-  \item Структура, 23
-  \item Структура программы, 10
-  \item Структуры, 255
-  \item Типы данных, 19
-    \subitem вещественный, 21
-    \subitem логический, 21
-    \subitem основные, 19
-    \subitem символьный, 20
-    \subitem составные, 19
-    \subitem структурированные, 22
-    \subitem целый, 20
+    \subitem ввод, 241
+    \subitem операции, 243
+    \subitem функции, 244
+    \subitem функции обработки, 241
+  \item Структура, 22
+  \item Структуры, 247
+  \item Типы данных, 18
+    \subitem вещественный, 20
+    \subitem логический, 20
+    \subitem основные, 18
+    \subitem символьный, 19
+    \subitem составные, 18
+    \subitem структурированные, 21
+    \subitem целый, 19
   \item Транслятор, 10
-  \item Указатель, 23
-    \subitem вычитание, 31
-    \subitem декремент, 31
-    \subitem инкремент, 31
-    \subitem получение адреса, 30
-    \subitem присваивание, 31
-    \subitem разадресация, 30
-    \subitem скрытый, 294
-    \subitem сложение с константой, 31
-  \item Утечки памяти, 385
+  \item Указатель, 22
+    \subitem вычитание, 30
+    \subitem декремент, 30
+    \subitem инкремент, 30
+    \subitem получение адреса, 29
+    \subitem присваивание, 30
+    \subitem разадресация, 29
+    \subitem скрытый, 286
+    \subitem сложение с константой, 30
+  \item Утечки памяти, 378
   \item Файл
-    \subitem .ui, 405
-    \subitem make-файл, 347
-    \subitem двоичный, 242
-    \subitem закрыть, 243
-    \subitem запись, 236, 237, 242, 243
-    \subitem открыть, 237, 242
-    \subitem переименование, 243
-    \subitem последовательный доступ, 244
-    \subitem проекта, 345
-    \subitem ресурсов, 412
-    \subitem текстовый, 236
-    \subitem удаление, 243
-    \subitem формы, 343, 400, 405
-    \subitem чтение, 236, 242, 243
-  \item Фильтр событий, 389, 392
+    \subitem .ui, 398
+    \subitem make-файл, 340
+    \subitem двоичный, 235
+    \subitem закрыть, 236
+    \subitem запись, 229, 230, 235, 236
+    \subitem открыть, 230, 235
+    \subitem переименование, 236
+    \subitem последовательный доступ, 237
+    \subitem проекта, 338
+    \subitem ресурсов, 405
+    \subitem текстовый, 229
+    \subitem удаление, 236
+    \subitem формы, 336, 393, 398
+    \subitem чтение, 229, 235, 236
+  \item Фильтр событий, 382, 385
   \item Флаги
-    \subitem Qt::Alligment, 368
-    \subitem Qt::WindowFlags, 399
-  \item Функции, 32
-    \subitem ввод данных, 36
-    \subitem вывод данных, 36
-    \subitem стандартные, 32
-  \item Функция, 101
-    \subitem calloc, 138
+    \subitem Qt::Alligment, 361
+    \subitem Qt::WindowFlags, 392
+  \item Функции, 31
+    \subitem ввод данных, 35
+    \subitem вывод данных, 35
+    \subitem стандартные, 31
+  \item Функция, 100
+    \subitem calloc, 137
     \subitem main, 10
-    \subitem mallocmalloc, 138
-    \subitem qCritical, 351
-    \subitem qDebug, 350, 351
-    \subitem qFatal, 351
-    \subitem qWarning, 351
-    \subitem realloc, 139
-    \subitem sqrt(x), 17
-    \subitem возврат результата, 104, 107
-    \subitem вызов, 103
-    \subitem заголовок, 102
+    \subitem malloc, 137
+    \subitem qCritical, 344
+    \subitem qDebug, 343, 344
+    \subitem qFatal, 344
+    \subitem qWarning, 344
+    \subitem realloc, 138
+    \subitem sqrt(x), 16
+    \subitem возврат результата, 103, 106
+    \subitem вызов, 102
+    \subitem заголовок, 101
     \subitem механизм передачи параметров, 
-		105
-    \subitem описание, 101
-    \subitem перегрузка имени, 124
-    \subitem прототип, 103
-    \subitem рекурсивная, 122
-    \subitem тело функции, 102
-    \subitem фактические параметры, 105
-    \subitem формальные параметры, 105
-    \subitem шаблон, 126
-  \item Цикл обработки событий, 387
+		104
+    \subitem описание, 100
+    \subitem перегрузка имени, 123
+    \subitem прототип, 102
+    \subitem рекурсивная, 121
+    \subitem тело функции, 101
+    \subitem фактические параметры, 104
+    \subitem формальные параметры, 104
+    \subitem шаблон, 125
+  \item Цикл обработки событий, 380
 
   \indexspace
 
-  \item Чисто виртуальный метод, 306
+  \item Чисто виртуальный метод, 298
   \item Чтение файла с использованием \Sys{Qt}, 
-		357, 358
+		350, 351
 
 \end{theindex}

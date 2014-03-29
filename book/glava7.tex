@@ -1,6 +1,6 @@
 \chapter[Организация ввода-вывода в \Sys{C++}]{Организация ввода-вывода в \Sys{C++}}
 \section[Форматированный ввод-вывод в \Sys{C++}]{Форматированный ввод-вывод в \Sys{C++}}
-В этом параграфе мы вернемся к рассмотренным ранее \emph{операторам} \Sys{cin} и
+В этом параграфе мы вернемся к рассмотренным ранее \emph{конструкциям} \Sys{cin} и
 \Sys{cout}, и рассмотрим возможности их использования для организации \emph{форматированного 
 }\index{Оператор!ввода}\emph{ввода}-\index{Оператор!вывода}\emph{вывода}.
 
@@ -120,7 +120,7 @@
 Использование большого количества флагов для управления одним или несколькими операторами ввода-вывода не совсем
 удобно, потом все установленные флаги придется отключать.
 
-Еще одним способом форматирования является использование манипуляторов непосредственно в операторах
+Еще одним способом форматирования является использование манипуляторов непосредственно в конструкциях
 \Sys{cin} и \Sys{cout}.
 
 \subsection[Использование манипуляторов форматирования]{Использование манипуляторов форматирования}
@@ -151,16 +151,16 @@
 \lstinline!int r=253;!\linebreak
 \lstinline!cout.setf(ios::fixed);!\linebreak
 \lstinline!cout<<"r="<<setw(8)<<r<<endl;!
-&\ \linebreak\ \linebreak\ \linebreak\Sys{r=\ \ \ \ \ 253}\\\hline
+&\ \linebreak\ \linebreak\Sys{r=\ \ \ \ \ 253}\\\hline
 \Sys{setprecision(n)} &\raggedright Определяет количество цифр ($n-1$) в дробной части числа &
 \lstinline!double h=1234.6578;!\linebreak
 \lstinline!cout.setf(ios::fixed);!\linebreak
 \lstinline!cout<<"h="<<setw(15);!\linebreak
 \lstinline!cout<<setprecision(3);!\linebreak
-\lstinline!cout<<h<<endl;!&\ \linebreak\ \linebreak\ \linebreak\Sys{h=1234.658}\\\hline
+\lstinline!cout<<h<<endl;!&\ \linebreak\ \linebreak\ \linebreak\ \linebreak\Sys{h=1234.658}\\\hline
 \Sys{dec} &\raggedright Перевод числа в десятичную систему (по умолчанию) &
 \lstinline!int r=0253;!\linebreak
-\lstinline!cout<<"r="<<dec<<r<<endl;!&\ \linebreak\ \linebreak\Sys{r=171}\\\hline
+\lstinline!cout<<"r="<<dec<<r<<endl;!&\ \linebreak\Sys{r=171}\\\hline
 \Sys{oct} &\raggedright Перевод числа в восьмеричную систему  &
 \lstinline!int r=253;!\linebreak
 \lstinline!cout<<"r="<<oct<<r<<endl;!&\ \linebreak\Sys{r=375}\\\hline
@@ -172,7 +172,7 @@
 \lstinline!int r=-25;!\linebreak
 \lstinline!cout.width(15);!\linebreak
 \lstinline!cout<<"r="<<setw(15)<<right;!\linebreak
-\lstinline!cout<<r<<endl;! &\ \linebreak\ \linebreak\Sys{r=-25}\\\hline
+\lstinline!cout<<r<<endl;! &\ \linebreak\ \linebreak\ \linebreak\Sys{r=-25}\\\hline
 \Sys{left} &\raggedright Выравнивание по левой границе (по умолчанию) &
 \lstinline!int r=-25;!\linebreak
 \lstinline!cout.width(15);!\linebreak
@@ -207,12 +207,12 @@
 \Sys{showbase} &%\raggedright 
 Выводить индикатор основания системы счисления &
 \lstinline!int p=253;!\linebreak
-\lstinline!cout<<"p="<<hex<<uppercase<<showbase<<p<<endl;! &\ \linebreak\Sys{p=0XFD}\\\hline
+\lstinline!cout<<"p="<<hex<<uppercase<<showbase<<p<<endl;! &\ \linebreak\ \linebreak\Sys{p=0XFD}\\\hline
 \Sys{noshowbase} &%\raggedright 
 Не выводить индикатор основания системы счисления &
 \lstinline!int p=253;!\linebreak
 \lstinline!cout<<"p="<<hex<<uppercase;!\linebreak
-\lstinline!cout<<noshowbase<<p<<endl;!&\ \linebreak\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
+\lstinline!cout<<noshowbase<<p<<endl;!&\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
 \Sys{setfill(c)} &\raggedright Установить символ \Sys{с} как заполнитель &
 \lstinline!cout<<"x="<<right<<setw(10)<<setprecision(4);!\linebreak
 \lstinline|cout<<setfill('!');|\linebreak
@@ -220,7 +220,7 @@
 \lstinline!cout<<"x="<<left<<setw(10);!\linebreak
 \lstinline!cout<<setprecision(4);!\linebreak
 \lstinline|cout<<setfill('!');|\linebreak
-\mbox{\lstinline!cout<<(float)1/7<<endl;!}&\ \linebreak\ \linebreak\ \linebreak\Sys{x=!!!!0.1429}\ \linebreak\ \linebreak\ \linebreak\ \linebreak\ \linebreak\Sys{x=0.1429!!!!}\\\hline
+\mbox{\lstinline!cout<<(float)1/7<<endl;!}&\ \linebreak\ \linebreak\ \linebreak\Sys{x=!!!!0.1429}\ \linebreak\ \linebreak\ \linebreak\ \linebreak\Sys{x=0.1429!!!!}\\\hline
 \Sys{scientific} &%\raggedright 
 Экспоненциальная форма вывода вещественных чисел &
 \lstinline!double p=146.673;!\linebreak
@@ -237,7 +237,8 @@
 \item \Sys{cout.width(n)} --- устанавливает ширину поля вывода --- $n$ позиций;
 \item \Sys{cout.precision(m)} --- определяет $m$ цифр в дробной части числа.
 \end{itemize}
-В п.~\ref{ch07:1.1}  и ~\ref{ch07:1.2}  были рассмотрены основные возможности форматированного ввода-вывода. При использовании операторов
+В п.~\ref{ch07:1.1}  и ~\ref{ch07:1.2}  были рассмотрены основные возможности форматированного ввода-вывода. 
+При использовании конструкций
 \Sys{cin} и \Sys{cout} фактически происходит ввод-вывод в \emph{текстовый файл}.
 При вводе текстовым файлом является клавиатура ПК, при выводе в качестве текстового файл выступает экран дисплея,
 \Sys{cin} и \Sys{cout} фактически являются именами
@@ -274,7 +275,7 @@
 Для того, чтобы \index{Файл!чтение}\emph{считать данные из текстового файла} необходимо:
 \begin{enumerate}
 \item Описать переменную типа \Sys{ifstream}.
-\item Отрыть файл с помощью функции \Sys{open}.
+\item Открыть файл с помощью функции \Sys{open}.
 \item Считать информацию из файла, при считывании каждой порции данных необходимо проверять достигнут ли конец файла.
 \item Закрыть файл.
 \end{enumerate}
@@ -291,7 +292,7 @@
 \index{Файл!открыть}\emph{открыть для записи}. В общем случае оператор открытия потока
 будет иметь вид:
 
-\Sys{F.open("file", mode);}
+\lstinline!F.open("file", mode);!
 
 Здесь \Sys{F} --- переменная, описанная как \Sys{ofstream}, \Sys{file} --- имя файла
 на диске, \Sys{mode} --- режим работы с открываемым файлом. 
@@ -316,7 +317,7 @@
 \Sys{true}, в противном случае \Sys{false}. Это позволит проверять корректность операции
 открытия файла.
 
-\emph{Открыть файл} (качестве примера возьмем файл \Sys{abc.txt}) в \emph{режиме
+\emph{Открыть файл} (в качестве примера возьмем файл \Sys{abc.txt}) в \emph{режиме
 записи} можно одним из следующих способов:
 \begin{lstlisting}
 //`Первый способ.`
@@ -466,8 +467,6 @@ while (!F.eof()) //`Организован цикл, условием оконч
 \begin{lstlisting}
 #include <iostream>
 #include <fstream>
-#include <stdlib.h>
-#include <iomanip>
 using namespace std;
 int main()
 {
@@ -486,7 +485,7 @@ int main()
     f.close(); //`Закрытие потока.`
     cout<<"n="<<n<<endl; //`Вывод на экран количества чисел.`
   }
-  else cout<<"File not found"<<endl; //`Если открытие файла прошло некорректно, то`
+  else cout<<"`\Sys{Файл не найден}`"<<endl; //`Если открытие файла прошло некорректно, то`
   //`вывод сообщение, об отсутствии такого файла.`
   return 0;
 }
@@ -497,8 +496,6 @@ int main()
 \begin{lstlisting}
 #include <iostream>
 #include <fstream>
-#include <stdlib.h>
-#include <iomanip>
 using namespace std;
 int main()
 {
@@ -510,7 +507,7 @@ int main()
     for (i=1;i<=n;f>>a,cout<<a<<"\t",i++);
       f.close();
   }
-  else cout<<"File not found"<<endl;
+  else cout<<"`\Sys{Файл не найден}`"<<endl;
   return 0;
 }
 \end{lstlisting}
@@ -532,8 +529,6 @@ int main()
 \begin{lstlisting}
 #include <iostream>
 #include <fstream>
-#include <stdlib.h>
-#include <iomanip>
 using namespace std;
 int main()
 {
@@ -567,7 +562,7 @@ int main()
       else  g<<a[i];  //`Запись последнего элемента массива`
     g.close(); //`Закрытие файла.`
   }
-  else cout<<"File not found"<<endl;
+  else cout<<"`\Sys{Файл не найден}`"<<endl;
   delete [] a;
   return 0;
 }
@@ -599,7 +594,7 @@ int main()
 \item Описать файловую переменную с помощью оператора
 \Sys{FILE *filename;}
 Здесь, \Sys{filename} --- имя переменной, где будет храниться указатель на файл.
-\item Отрыть файл с помощью функции \Sys{fopen}.
+\item Открыть файл с помощью функции \Sys{fopen}.
 \item Записать информацию в файл с помощью функции \Sys{fwrite}.
 \item Закрыть файл с помощью функции \Sys{fclose}.
 \end{enumerate}
@@ -607,7 +602,7 @@ int main()
 
 \begin{enumerate}
 \item Описать переменную типа \Sys{FILE *}.
-\item Отрыть файл с помощью функции \Sys{fopen}.
+\item Открыть файл с помощью функции \Sys{fopen}.
 \item Считать необходимую информацию из файла с помощью функции \Sys{fread}, при считывании информации
 следить за тем, достигнут ли конец файла.
 \item Закрыть файл с помощью функции \Sys{fclose}.
@@ -853,7 +848,7 @@ fclose(f);
 Средний балл = 4.67
 \end{verbatim}
 
-Рассмотрим пример чтения данных из файла. Пусть в файле \Sys{test.txt} хранится следующая информация:
+Рассмотрим пример чтения данных из файла. Пусть в файле \Sys{test.txt} хранится информация:
 \begin{verbatim}
 1 Иванов Петр  170 78.1
 2 Петров Иван  180 89.6
