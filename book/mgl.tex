@@ -1,0 +1,1413 @@
+\setcounter{tocdepth}{10}
+\renewcommand\contentsname{Оглавление}
+\tableofcontents
+\section{}
+\clearpage\section[Приложение. Общие сведения о библиотеке MathGL]{Приложение. Общие сведения о библиотеке MathGL}
+При решении различных задач, возникает необходимости графического отображения данных (графики, диаграммы, поверхности).
+Одним из универсальных способов построения различных графиков является кросс-платформенная библиотека MathGL.
+
+\index{Библиотека!Mathgl}\textstyleEmphasis{Mathgl} – свободная кросс платформенная библиотека для построения 2-х и 3-х
+мерных графиков функции. Её использование позволит построить график с помощью нескольких операторов. Синтаксис функций,
+используемых в MathGL, подобен синтаксису MathLab, Octave, Scilab, GnuPlot. Официальный сайт – 
+http://mathgl.sourceforge.net/doc\_ru/Website.html\#Website, на странице загрузки
+http://mathgl.sourceforge.net/doc\_ru/Download.html\#Download можно скачать последнюю версию программы для различных
+ОС, англоязычную документацию в формате pdf. Группа в Google – https://groups.google.com/forum/\#!forum/mathgl.
+Русскоязычная страница с описанием – http://mathgl.sourceforge.net/doc\_ru/index.html\#SEC\_Contents, англоязычная –
+http://mathgl.sourceforge.net/doc\_en/index.html\#SEC\_Contents. Кроме С(С++) поддерживаются Fortran, Python, Octave,
+скриптовый язык MGL.
+
+Рассмотрим особенности установки и примеры использования библиотеки для построения графиков.
+
+\subsection{Установка MathGL в Linux.}
+Библиотека входит в репозитории большинства современных дистрибутивов Linux. Её можно установить из репозитория
+стандартным для вашего дистрибутива, однако в репозитории зачастую находится не самая новая версия. Для установки самой
+новой версии необходимо:
+
+\begin{enumerate}
+\item Скачать исходники последней версии с официального сайта.
+\item Распаковать.
+\item Последовательно выполнить команды\footnote{Перед выполнением команды cmake, возможно, придётся доставлять
+необходимые пакеты. При работе в debian (6, 7), ubuntu (12.04, 12.10, 13.04, 13.10) авторам пришлось доставить  пакеты
+cmake, zlib1g-dev, libpng12-dev, libqt4-opengl-dev, libqtwebkit-dev. Кроме того, должен быть устанвлен компилятор g++.}
+\end{enumerate}
+\begin{itemize}
+\item \begin{itemize}
+\item cmake -Denable-qt=ON .
+\item cmake .
+\item make
+\item sudo make install
+\end{itemize}
+\end{itemize}
+\begin{enumerate}
+\item Скопировать файлы libmgl-qt.so.7.1.0 и libmgl.so.7.1.0\footnote{Версии библиотек libmgl указаны применительно к
+mathgl 2.2, в вашем конкретном случае могут быть другие библиотеки.} из каталога /usr/local/lib в каталог /lib (нужны
+права администратора(суперпользователя).
+\end{enumerate}
+После этого для компиляции программы с использованием библиотеки MathGL необходимо использовать ключи -L/usr/local/lib
+-L/usr/lib -lmgl -lmgl-qt, например для компиляции файла с именем 1.cpp можно использовать команду
+
+{\upshape
+g++ -o 1  1.cpp -L/usr/local/lib -L/usr/lib -lmgl -lmgl-qt}
+
+Рассмотрим возможности библиотеки на конкретных примерах.
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref0}}. Построить график функции  $f(x)=\sin (x)+\frac{1}{3}\cdot
+\sin (3\cdot x)+\frac{1}{5}\cdot \sin (5\cdot x)$ .
+
+Следующий программный код позволит построить линию графика (рис. 1) на интервале [-1;1].
+
+\#include {\textless}mgl2/qt.h{\textgreater}
+
+int sample(mglGraph *gr)
+
+\{
+
+\ \ //Заголоок графика
+
+\ \ gr-{\textgreater}Title(null{<<}График функции y=f(x)null{<<});
+
+\ \ //График заданной функции.
+
+{\upshape
+\ \ //Линия графика изображена красным цветом {}- null{<<}rnull{<<}.}
+
+\ \ gr-{\textgreater}FPlot(null{<<}sin(x)+1/3*sin(3*x)+1/5*sin(5*x)null{<<},null{<<}rnull{<<});
+
+return 0;
+
+\}
+
+int main(int argc,char **argv)
+
+\{
+
+setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});
+
+mglQT gr(sample,null{<<}Plotnull{<<});
+
+return gr.Run();
+
+\}
+
+Далее представлен текст программы, с помощью которого можно усовершенствовать график, показанный на рис.
+\ref{seq:ref0a}. На рис. \ref{seq:ref1} видно, что был увеличен диапазон построения графика, добавлены оси координат,
+подписи под ними и линии сетки.
+
+\begin{minipage}{10.961cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref0a}}: График функции к задаче \ref{seq:ref0}}
+\includegraphics[scale=0.33]{mgl-img001}\end{minipage}
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ //Заголоок графика}
+
+{\upshape
+\ \ gr-{\textgreater}Title(null{<<}График функции y=f(x)null{<<});}
+
+{\upshape
+\ \ //Установка центра координатных осей}
+
+{\upshape
+\ \ gr-{\textgreater}SetOrigin(0,0);}
+
+{\upshape
+\ \ //Границы по оси абсцисс от -10 до 10,}
+
+\ \ //по оси ординат от -1 до 1.
+
+{\upshape
+\ \ gr-{\textgreater}SetRanges(-10,10,-1,1);}
+
+{\upshape
+\ \ //Вывод значений возле осей}
+
+{\upshape
+\ \ gr-{\textgreater}Axis();}
+
+{\upshape
+\ \ //Линии сетки}
+
+{\upshape
+\ \ gr-{\textgreater}Grid();}
+
+\ \ //График заданной функции.
+
+{\upshape
+\ \ gr-{\textgreater}FPlot(null{<<}sin(x)+1/3*sin(3*x)+1/5*sin(5*x)null{<<}, null{<<}rnull{<<});}
+
+{\upshape
+\ \ return 0;}
+
+{\upshape
+\}}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{\ \ //Поддержка кириллицы в С++}
+
+{\upshape
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ //Вывод графика на экран в окно с именем Plot}
+
+{\upshape
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});}
+
+{\upshape
+\ \ return gr.Run();}
+
+{\upshape
+\}}
+
+{\centering \begin{minipage}{14.081cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref1}}: Форматирование линии и области построения графика к задаче
+\ref{seq:ref0}}
+\includegraphics[scale=0.33]{mgl-img002}\end{minipage}\par}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref1a}}. Построить графики функций  $f(x)=\sin (2\cdot x)$ и 
+$y(x)=\frac{4\cdot \cos (x)}{3}$  в одной графической области.
+
+Далее приведен текст программы реализующий решение поставленной задачи. Результаты работы программы показаны на рис.
+\ref{seq:ref2}.
+
+\#include {\textless}mgl2/qt.h{\textgreater}
+
+\#include {\textless}math.h{\textgreater}
+
+int sample(mglGraph *gr)
+
+{\upshape
+\{\ \ //Заголовок графика}
+
+\ \ gr-{\textgreater}Title(null{<<}Графики функции y=f(x)null{<<});
+
+{\upshape
+\ \ //Границы по осям}
+
+\ \ gr-{\textgreater}SetRanges(-15,15,-2,2);
+
+{\upshape
+\ \ //Вывод значений возле осей}
+
+\ \ gr-{\textgreater}Axis();
+
+{\upshape
+\ \ //Линии сетки}
+
+\ \ gr-{\textgreater}Grid();
+
+\ \ //График функции f(x), красная (r) сплошная линия.
+
+\ \ gr-{\textgreater}FPlot(null{<<}sin(2*x)null{<<}, null{<<}rnull{<<});
+
+\ \ //Добавление легенды
+
+\ \ gr-{\textgreater}AddLegend(null{<<}sin(2*x)null{<<},null{<<}rnull{<<});
+
+{\upshape
+\ \ //График функции y(x), чёрная (k) линия и точки (.).}
+
+\ \ gr-{\textgreater}FPlot(null{<<}4*cos(x)/3null{<<}, null{<<}k.null{<<});
+
+\ \ //Добавление легенды
+
+\ \ gr-{\textgreater}AddLegend(null{<<}4*cos(x)/3null{<<},null{<<}k.null{<<});
+
+{\upshape
+\ \ //Вывод легенды на экран в правом верхнем углу}
+
+\ \ gr-{\textgreater}Legend(3);
+
+{\upshape
+\ \ //Вывод подписи по оси абсцисс}
+
+\ \ gr-{\textgreater}Label('x',null{<<}OXnull{<<},0);
+
+{\upshape
+\ \ //Вывод подписи по оси ординат}
+
+\ \ gr-{\textgreater}Label('y',null{<<}OYnull{<<});
+
+\ \ return 0;
+
+\}
+
+int main(int argc,char **argv)
+
+\{
+
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});
+
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});
+
+\ \ return gr.Run();
+
+\}
+
+{\centering \begin{minipage}{13.113cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref2}}: Графики к задаче \ref{seq:ref1a}}
+\includegraphics[scale=0.33]{mgl-img003}\end{minipage}\par}
+
+ЗАДАЧА \stepcounter{qwerty}{\theqwerty}. Построить в одном графическом окне графики функций:
+
+\begin{itemize}
+\item  $f(x)=\sin (x)$ на интервале [-10;10], 
+\item  $f(x)=\cos (x)$ на интервале [-6;6], 
+\item  $f(x)=e^{\cos (x)}$ на интервале [-6;6],
+\item  $f(x)=e^{\sin (x)}$ на интервале [-12;12].
+\end{itemize}
+Результаты вывести на экран и в файл.
+
+Далее приведен программный код и результат его работы (рис. \ref{seq:ref3}).
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+\#include {\textless}mgl2/mgl.h{\textgreater}}
+
+{\upshape
+\#include {\textless}iostream{\textgreater}}
+
+{\upshape
+using namespace std;}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{}
+
+{\upshape
+//График функции sin(x) на интервале [-10;10]}
+
+{\upshape
+gr-{\textgreater}SubPlot(2,2,0); }
+
+{\upshape
+gr-{\textgreater}Title(null{<<}График функции sin(x)null{<<});}
+
+{\upshape
+gr-{\textgreater}SetOrigin(0,0);}
+
+{\upshape
+gr-{\textgreater}SetRanges(-10,10,-1,1);}
+
+{\upshape
+gr-{\textgreater}Axis(); }
+
+{\upshape
+gr-{\textgreater}Grid(); }
+
+{\upshape
+gr-{\textgreater}FPlot(null{<<}sin(x)null{<<},null{<<}k-.null{<<});}
+
+{\upshape
+//График функции cos(x) на интервале [-6;6]}
+
+{\upshape
+gr-{\textgreater}SubPlot(2,2,1); }
+
+{\upshape
+gr-{\textgreater}Title(null{<<}График функции cos(x)null{<<});}
+
+{\upshape
+gr-{\textgreater}SetOrigin(0,0);}
+
+{\upshape
+gr-{\textgreater}SetRanges(-6,6,-1,1);}
+
+{\upshape
+gr-{\textgreater}Axis(); }
+
+{\upshape
+gr-{\textgreater}Grid(); }
+
+{\upshape
+gr-{\textgreater}FPlot(null{<<}cos(x)null{<<},null{<<}k .null{<<});}
+
+{\upshape
+//График функции exp(cos(x)) на интервале [-6;6]}
+
+{\upshape
+gr-{\textgreater}SubPlot(2,2,2);}
+
+{\upshape
+gr-{\textgreater}Title(null{<<}График функции e\^{}\{cos(x)\}null{<<});}
+
+{\upshape
+gr-{\textgreater}SetOrigin(0,0);}
+
+{\upshape
+gr-{\textgreater}SetRanges(-6,6,0,3);}
+
+{\upshape
+gr-{\textgreater}Axis(); }
+
+{\upshape
+gr-{\textgreater}Grid(); }
+
+{\upshape
+gr-{\textgreater}FPlot(null{<<}exp(cos(x))null{<<},null{<<}r onull{<<});}
+
+{\upshape
+//График функции exp(sin(x)) на интервале [-12;12]}
+
+{\upshape
+gr-{\textgreater}SubPlot(2,2,3); }
+
+{\upshape
+gr-{\textgreater}Title(null{<<}График функции e\^{}\{sin(x)\}null{<<});}
+
+{\upshape
+gr-{\textgreater}SetOrigin(0,0);}
+
+{\upshape
+gr-{\textgreater}SetRanges(-15,15,0,3);}
+
+{\upshape
+gr-{\textgreater}Axis(); }
+
+{\upshape
+gr-{\textgreater}Grid(); }
+
+{\upshape
+gr-{\textgreater}FPlot(null{<<}exp(sin(x))null{<<},null{<<}r-onull{<<});}
+
+{\upshape
+return 0;}
+
+{\upshape
+\}}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ //Вывод на экран или в файл}
+
+{\upshape
+\ \ int k;}
+
+{\upshape
+\ \ cout{\textless}{\textless}null{<<}Введите 1, если будете выводить на экран, 2 - если в
+файл{\textbackslash}nk=null{<<};}
+
+{\upshape
+\ \ cin{\textgreater}{\textgreater}k;}
+
+{\upshape
+\ \ if(k==1)}
+
+{\upshape
+\ \ \{}
+
+{\upshape
+\ \ \ \ //Поддержка кириллицы в С++\ \ }
+
+{\upshape
+\ \ \ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ \ \ //Вывод на экран}
+
+{\upshape
+\ \ \ \ mglQT gr(sample,null{<<}Plotsnull{<<});}
+
+{\upshape
+ \ \ \ \ return gr.Run();}
+
+{\upshape
+\ \ \}else}
+
+{\upshape
+\ \ \{}
+
+{\upshape
+\ \ \ \ mglGraph gr;}
+
+{\upshape
+\ \ \ \ gr.Alpha(true);}
+
+{\upshape
+\ \ \ \ gr.Light(true);}
+
+{\upshape
+\ \ \ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ \ \ //Обращение к функции вывода}
+
+{\upshape
+\ \ \ \ sample(\&gr);}
+
+{\upshape
+\ \ \ \ //Запись изображения в файл}
+
+{\upshape
+\ \ \ \ gr.WriteEPS(null{<<}test.epsnull{<<});}
+
+{\upshape
+\ \ \ \ return 0;\}}
+
+{\upshape
+\}}
+
+{\centering \begin{minipage}{14.864cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref3}}: График функций к задаче 3}
+\includegraphics[scale=0.33]{mgl-img004}\end{minipage}\par}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref3a}}. Построить график функций 
+$f(x)=1-\frac{0.4}{x}+\frac{0.05}{x^{2}}$ .
+
+Не трудно заметить, что функция \textstyleEmphasis{f}(\textstyleEmphasis{x}) не существует в точке ноль. Поэтому
+построим её график на двух интервалах [-2;-0.1] и [0.1;2], исключив точку разрыва из диапазона построения. Текст
+программы с подробными комментариями приведен далее. Решение задачи представлено на рис. \ref{seq:ref4}.
+
+\#include {\textless}mgl2/qt.h{\textgreater}
+
+\#include {\textless}iostream{\textgreater}
+
+using namespace std;
+
+int sample(mglGraph *gr)
+
+\{\ \ mglData x1(191),x2(191), y1(191), y2(191) ;
+
+\ \ int i; float h,a1,b1,a2,b2;
+
+\ \ //График точечной разрывной функции
+
+{\upshape
+\ \ //Первый интервал}
+
+\ \ a1=-2;b1=-0.1;
+
+\ \ h=0.01;
+
+\ \ for(i=0;i{\textless}191;i++)
+
+\ \ \{
+
+\ \ \ \ x1[i]=a1+i*h;
+
+\ \ \ \ y1[i]=1-0.4/x1[i]+0.05/x1[i]/x1[i];
+
+\ \ \}
+
+\ \ //Второй интервал
+
+\ \ a2=0.1;b2=2;
+
+\ \ h=0.01;
+
+\ \ for(i=0;i{\textless}191;i++)
+
+\ \ \{
+
+\ \ \ \ x2[i]=a2+i*h;
+
+\ \ \ \ y2[i]=1-0.4/x2[i]+0.05/(x2[i]*x2[i]);
+
+\ \ \}
+
+\ \ //Границы по оси абсцисс и ординат
+
+\ \ gr-{\textgreater}SetRanges(a1,b2,0,10);
+
+{\upshape
+\ \ //Оси координат}
+
+\ \ gr-{\textgreater}Axis();
+
+{\upshape
+\ \ //Сетка}
+
+\ \ gr-{\textgreater}Grid();
+
+{\upshape
+\ \ //График функции на первом интервале, чёрный (k) цвет.}
+
+\ \ gr-{\textgreater}Plot(x1,y1,null{<<}knull{<<});
+
+{\upshape
+\ \ //График функции на втором интервале, чёрный (k) цвет.}
+
+\ \ gr-{\textgreater}Plot(x2,y2,null{<<}knull{<<});
+
+\ \ //Размер шрифта
+
+{\upshape
+\ \ gr-{\textgreater}SetFontSize(2);}
+
+\ \ //Заголовок
+
+\ \ gr-{\textgreater}Title(null{<<}График разрывной функцииnull{<<});
+
+\ \ //Размер шрифта
+
+\ \ gr-{\textgreater}SetFontSize(4);
+
+\ \ //Подпись по оси абсцисс
+
+\ \ gr-{\textgreater}Label('x',null{<<}OXnull{<<},0);
+
+\ \ //Подпись по оси ординат
+
+\ \  gr-{\textgreater}Label('y',null{<<}OYnull{<<});
+
+return 0;
+
+\}
+
+int main(int argc,char **argv)
+
+\{
+
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});
+
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});
+
+\ \ return gr.Run();
+
+\}
+
+\begin{minipage}{15.956cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref4}}: График функции к задаче \ref{seq:ref3a}}
+\includegraphics[scale=0.33]{mgl-img005}\end{minipage}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref4a}}. Построить график функции . $y(x)=\frac{1}{x^{2}-2\cdot
+x-3}$ на интервале [-5;5]. Функция y(x) имеет разрыв в точках -1 и 3. Построим её график на трёх интервалах [-5;-1.1] и
+[-0.9; 2.9], [3.1;5], исключив точки разрыва из диапазона построения. Текст программы с подробными комментариями
+приведён далее. Решение задачи представлено на рис. \ref{seq:ref4}.
+
+\#include {\textless}mgl2/qt.h{\textgreater}
+
+\#include {\textless}iostream{\textgreater}
+
+using namespace std;
+
+int sample(mglGraph *gr)
+
+\{\ \ mglData x1(391),x2(381), x3(191),y1(391), y2(381),y3(191) ;
+
+\ \ int i; float h,a1,b1,a2,b2,a3,b3;
+
+\ \ //График точечной разрывной функции
+
+\ \ //Первый интервал
+
+\ \ a1=-5;b1=-1.1;
+
+\ \ h=0.01;
+
+\ \ for(i=0;i{\textless}391;i++)
+
+\ \ \{
+
+\ \ \ \ x1[i]=a1+i*h;
+
+\ \ \ \ y1[i]=1/(x1[i]*x1[i]-2*x1[i]-3);
+
+\ \ \}
+
+\ \ //Второй интервал
+
+\ \ a2=-0.9;b2=2.9;
+
+\ \ h=0.01;
+
+\ \ for(i=0;i{\textless}381;i++)
+
+\ \ \{
+
+\ \ \ \ x2[i]=a2+i*h;
+
+\ \ \ \ y2[i]=1/(x2[i]*x2[i]-2*x2[i]-3);
+
+\ \ \}
+
+\ \ //Третий интервал
+
+\ \ a3=3.1;b3=5;
+
+\ \ h=0.01;
+
+\ \ for(i=0;i{\textless}191;i++)
+
+\ \ \{
+
+\ \ \ \ x3[i]=a3+i*h;
+
+\ \ \ \ y3[i]=1/(x3[i]*x3[i]-2*x3[i]-3);
+
+\ \ \}
+
+\ \ //Границы по оси абсцисс и ординат
+
+\ \ gr-{\textgreater}SetRanges(-6,6,-3,3);
+
+\ \ //Оси координат
+
+\ \ gr-{\textgreater}Axis();
+
+\ \ //Сетка
+
+\ \ gr-{\textgreater}Grid();
+
+\ \ //График функции на первом интервале, чёрный (k) цвет.
+
+\ \ gr-{\textgreater}Plot(x1,y1,null{<<}knull{<<});
+
+\ \ //График функции на втором интервале, чёрный (k) цвет.
+
+\ \ gr-{\textgreater}Plot(x2,y2,null{<<}knull{<<});
+
+\ \ //График функции на третьем интервале, чёрный (k)
+
+\ \ // цвет.
+
+\ \ gr-{\textgreater}Plot(x3,y3,null{<<}knull{<<});
+
+\ \ //Размер шрифта
+
+\ \ gr-{\textgreater}SetFontSize(2);
+
+\ \ //Заголовок
+
+\ \ gr-{\textgreater}Title(null{<<}График функции c двумя разрывамиnull{<<});
+
+\ \ //Размер шрифта
+
+\ \ gr-{\textgreater}SetFontSize(4);
+
+\ \ //Подпись по оси абсцисс
+
+\ \ gr-{\textgreater}Label('x',null{<<}OXnull{<<},0);
+
+\ \ //Подпись по оси ординат
+
+\ \  gr-{\textgreater}Label('y',null{<<}OYnull{<<});
+
+return 0;
+
+\}
+
+int main(int argc,char **argv)
+
+\{
+
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});
+
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});
+
+\ \ return gr.Run();
+
+\}
+
+\begin{minipage}{15.956cm}
+{\itshape
+Рис. \stepcounter{qwertya}{\theqwertya} График функции к задаче \ref{seq:ref4a}}
+\includegraphics[scale=0.33]{mgl-img006}\end{minipage}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref5}}. Построить график функции  $x(t)=3\cdot \cos (t),y(t)=2\cdot
+\sin (t)$ .
+
+График задан в параметрической форме и представляет собой эллипс. Выберем интервал построения графика  $[0;2\cdot \pi
+]$, ранжируем переменную \textstyleEmphasis{t} на этом интервале, сформируем массивы \textstyleEmphasis{x} и
+\textstyleEmphasis{y} и построим точеmчный график. Текст программы и результаты ее работы (рис. \ref{seq:ref5a})
+представлены далее.
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+\#include {\textless}iostream{\textgreater}}
+
+{\upshape
+\#include {\textless}math.h{\textgreater}}
+
+{\upshape
+using namespace std;}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{\ \ //График эллипса}
+
+{\upshape
+\ \ int i,n; float h,a,b,t;}
+
+{\upshape
+\ \ a=0;}
+
+{\upshape
+\ \ b=2*M\_PI;}
+
+{\upshape
+\ \ n=200;}
+
+{\upshape
+\ \ h=(b-a)/n;}
+
+{\upshape
+\ \ //Формирование массивов абсцисс и ординат}
+
+{\upshape
+\ \ mglData x(n),y(n);}
+
+{\upshape
+\ \ for(i=0;i{\textless}n;i++)}
+
+{\upshape
+\ \ \{}
+
+{\upshape
+\ \ \ \ t=a+i*h;}
+
+{\upshape
+\ \ \ \ x[i]=3*cos(t);}
+
+{\upshape
+\ \ \ \ y[i]=2*sin(t);}
+
+{\upshape
+\ \ \}}
+
+{\upshape
+\ \ //Границы по осям координат}
+
+{\upshape
+\ \ gr-{\textgreater}SetRanges(-3,3,-2,2);}
+
+{\upshape
+\ \ //Оси координат}
+
+{\upshape
+\ \ gr-{\textgreater}Axis();}
+
+{\upshape
+\ \ //Сетка}
+
+{\upshape
+\ \ gr-{\textgreater}Grid();}
+
+{\upshape
+\ \ //График функции}
+
+{\upshape
+\ \ gr-{\textgreater}Plot(x,y,null{<<}knull{<<});}
+
+{\upshape
+\ \ gr-{\textgreater}SetFontSize(2);}
+
+{\upshape
+\ \ gr-{\textgreater}Title(null{<<}График эллипсаnull{<<});}
+
+{\upshape
+\ \ gr-{\textgreater}SetFontSize(4);}
+
+{\upshape
+\ \ gr-{\textgreater}Label('x',null{<<}OXnull{<<},0);}
+
+{\upshape
+\ \ gr-{\textgreater}Label('y',null{<<}OYnull{<<});}
+
+{\upshape
+return 0;}
+
+{\upshape
+\}}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});}
+
+{\upshape
+\ \ return gr.Run();}
+
+{\upshape
+\}}
+
+\begin{minipage}{11.317cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref5a}}: График к задаче \ref{seq:ref5}}
+\includegraphics[scale=0.33]{mgl-img007}\end{minipage}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref6}}. Построить график функции:
+
+{\centering
+ $z(x,y)=0.6\cdot \sin (2\cdot \pi \cdot x)\cdot \cos (3\cdot \pi \cdot y)+0.4\cdot \cos (3\cdot \pi \cdot x\cdot y)$ .
+\par}
+
+В данном случае необходимо построить график функции двух аргументов. Для этого нужно сформировать матрицу \textit{z} при
+изменении значений аргументов \textit{x} и \textit{y} и отобразить полученные результаты.
+
+Далее приведен текст программы и результаты ее работы (рис. \ref{seq:ref6a}).
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+\#include {\textless}iostream{\textgreater}}
+
+{\upshape
+using namespace std;}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ //Изображение поверхности}
+
+{\upshape
+\ \ //Диапазон изменения x, y, z.}
+
+{\upshape
+\ \ gr-{\textgreater}SetRanges(-5,5,-5,5,-1,2);}
+
+{\upshape
+\ \ //Размер матрицы z по х и по y}
+
+{\upshape
+\ \ mglData z(500,400);}
+
+{\upshape
+\ \ //Формирование матрицы z.}
+
+{\upshape
+\ \ z.Modify(null{<<}0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))null{<<});}
+
+{\upshape
+\ \ //Вращение осей}
+
+{\upshape
+\ \ gr-{\textgreater}Rotate(40,60);}
+
+{\upshape
+\ \ gr-{\textgreater}Box(); gr-{\textgreater}Axis(); gr-{\textgreater}Grid();}
+
+{\upshape
+\ \ //График функции}
+
+{\upshape
+\ \ gr-{\textgreater}Mesh(z);}
+
+\}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ mglQT gr(sample,null{<<}MathGL examplenull{<<});}
+
+{\upshape
+\ \ return gr.Run();}
+
+\}
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref7}}. Построить эллипсоид.
+
+Текст программы и результаты её работы (рис. \ref{seq:ref7a}).
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+\#include {\textless}mgl2/mgl.h{\textgreater}}
+
+{\upshape
+\#include {\textless}iostream{\textgreater}}
+
+{\upshape
+using namespace std;}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{\ \ gr-{\textgreater}Title(null{<<}Эллипсоидnull{<<});}
+
+{\upshape
+\ \ mglData x(50,40),y(50,40),z(50,40);}
+
+{\upshape
+\ \ gr-{\textgreater}Fill(x,null{<<}0.1+0.8*sin(2*pi*x)*sin(2*pi*y)null{<<});}
+
+{\upshape
+\ \ gr-{\textgreater}Fill(y,null{<<}0.15+0.7*cos(2*pi*x)*sin(2*pi*y)null{<<});}
+
+{\upshape
+\ \ gr-{\textgreater}Fill(z,null{<<}0.2+0.6*cos(2*pi*y)null{<<});}
+
+{\upshape
+\ \ gr-{\textgreater}Rotate(50,60);}
+
+{\upshape
+\ \ gr-{\textgreater}Box();}
+
+{\upshape
+\ \ gr-{\textgreater}Surf(x,y,z,null{<<}BbwrRnull{<<});}
+
+{\upshape
+\ \ return 0;}
+
+{\upshape
+\}}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ mglQT gr(sample,null{<<}Ellipsenull{<<});}
+
+{\upshape
+\ \ return gr.Run();}
+
+\}
+
+{\centering \begin{minipage}{12.127cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref6a}}: График к задаче \ref{seq:ref6}}
+\includegraphics[scale=0.33]{mgl-img008}\end{minipage}\par}
+
+{\centering \begin{minipage}{12.056cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref7a}}: График к задаче \ref{seq:ref7}}
+\includegraphics[scale=0.33]{mgl-img009}\end{minipage}%
+%{\textless}!{}-{}-[if supportFields{]}{\textgreater}{\textless}span style={}'font{}-size:10.0pt;font{}-family:null{<<}Times New Romannull{<<},null{<<}serifnull{<<};
+%mso{}-fareast{}-font{}-family:null{<<}Times New Romannull{<<};mso{}-ansi{}-language:RU;mso{}-fareast{}-language:
+%RU;mso{}-bidi{}-language:AR{}-SA{}'{\textgreater}{\textless}span style={}'mso{}-element:field{}-end{}'{\textgreater}{\textless}/span{\textgreater}{\textless}/span{\textgreater}{\textless}![endif{]}{}-{}-{\textgreater}
+%12 Февраль 2013 г. 20:27
+\par}
+
+В завершении приведём решение реальной инженерной задачи с использованием MathGL.
+
+ЗАДАЧА {\refstepcounter{qwerty}\theqwerty\label{seq:ref8}}. .В «Основах химии» Д.И. Менделеева приводятся данные о
+растворимости азотнокислого натрия  $\mathit{NaNO}_{3}$  в зависимости от температуры воды. Число условных частей 
+$\mathit{NaNO}_{3}$ растворяющихся в 100 частях воды при соответствующих температурах представлено в таблице. 
+
+\begin{center}
+\tablefirsthead{}
+\tablehead{}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}{|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.573cm}|m{1.574cm}|}
+\hline
+0 &
+4 &
+10 &
+15 &
+21 &
+29 &
+36 &
+51 &
+68\\\hline
+66.7 &
+71.0 &
+76.3 &
+80.6 &
+85.7 &
+92.9 &
+99.4 &
+113.6 &
+125.1\\\hline
+\end{supertabular}
+\end{center}
+Требуется определить растворимость азотнокислого натрия при температурах 25, 32 и 45 градусах в случае линейной
+зависимости и найти коэффициент корреляции.
+
+Параметры линейной зависимости (линии регрессии) $y=a+\mathit{bx}$ подбираются методом наименьших квадратов и
+рассчитываются по формулам  $\left\{\genfrac{}{}{0pt}{0}{a=\frac{\sum _{i=1}^{n}y_{i}-b\cdot \sum
+_{i=1}^{n}x_{i}}{n}}{b=\frac{n\cdot \sum _{i=1}^{n}{y_{i}\cdot x_{i}-\sum _{i=1}^{n}y_{i}\cdot \sum
+_{i=1}^{n}x_{i}}}{n\sum _{i=1}^{n}{x_{i}^{2}}-\left(\sum _{i=1}^{n}x_{i}\right)^{2}}}\right.$.
+
+Этапы решения задачи:
+
+\begin{enumerate}
+\item \begin{enumerate}
+\item Ввод исходных данных из текстового файла.
+\item Вычисление параметров a и b.
+\item Расчёт значений линейной зависимости  $y=a+bx$ в точках  25, 32, 45.
+\item Изображение графиков: экспериментальных точек, линии регрессии и рассчитанных значений.
+\end{enumerate}
+\end{enumerate}
+Исходные данные задачи хранятся в текстовом файле input.txt (см. рис. \ref{seq:ref9}). 
+
+\begin{minipage}{11.88cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref9}}. Файл исходных данных к задаче \ref{seq:ref8}}
+\includegraphics[scale=0.33]{mgl-img010}\end{minipage}
+
+В первой строке файла хранится количество экспериментальных точек, в следующих двух строках – массивы абсцисс и ординат
+экспериментальных точек. В четвёртой строке хранится количество (3) и точки (25, 32, 45), в которых необходимо
+вычислить ожидаемое значение.
+
+Текст программы решения задачи с комментариями приведен ниже.
+
+{\upshape
+\#include {\textless}mgl2/qt.h{\textgreater}}
+
+{\upshape
+\#include {\textless}iostream{\textgreater}}
+
+{\upshape
+\#include {\textless}fstream{\textgreater}}
+
+{\upshape
+using namespace std;}
+
+{\upshape
+int sample(mglGraph *gr)}
+
+{\upshape
+\{\ \ mglData x2(70),y2(70) ;}
+
+{\upshape
+\ \ int i,n,k; }
+
+{\upshape
+\ \ float h,a,b,sx=0,sy=0,syx=0,sx2=0;}
+
+{\upshape
+//Поток для чтения файла исходных данных}
+
+{\upshape
+\ \ ifstream F;}
+
+{\upshape
+F.open(null{<<}input.txtnull{<<});}
+
+{\upshape
+//Чтение исходных данных}
+
+{\upshape
+F{\textgreater}{\textgreater}n;}
+
+{\upshape
+//n- количество экспериментальных точек.}
+
+{\upshape
+// x(n),y(n) – координаты экспериментальных точек}
+
+{\upshape
+mglData x(n),y(n);}
+
+{\upshape
+cout{\textless}{\textless}null{<<}X{\textbackslash}nnull{<<};}
+
+{\upshape
+\ \ for(i=0;i{\textless}n;i++)}
+
+{\upshape
+\ \ \{F{\textgreater}{\textgreater}x[i];}
+
+{\upshape
+\ \ cout{\textless}{\textless}x[i]{\textless}{\textless}null{<<} null{<<};\}}
+
+{\upshape
+\ \ cout{\textless}{\textless}endl;}
+
+{\upshape
+cout{\textless}{\textless}null{<<}Y{\textbackslash}nnull{<<};}
+
+{\upshape
+\ \ for(i=0;i{\textless}n;i++)}
+
+{\upshape
+\ \ \{F{\textgreater}{\textgreater}y[i];}
+
+{\upshape
+\ \ cout{\textless}{\textless}y[i]{\textless}{\textless}null{<<} null{<<};\}}
+
+{\upshape
+\ \ cout{\textless}{\textless}endl;}
+
+{\upshape
+F{\textgreater}{\textgreater}k;}
+
+{\upshape
+cout{\textless}{\textless}null{<<}k=null{<<}{\textless}{\textless}k{\textless}{\textless}endl;}
+
+{\upshape
+mglData xr(k),yr(k);}
+
+{\upshape
+//xr, yr – ожидаемые значения, }
+
+{\upshape
+\ \ for(i=0;i{\textless}k;i++)}
+
+{\upshape
+\ \ F{\textgreater}{\textgreater}xr[i];}
+
+{\upshape
+\ \ cout{\textless}{\textless}endl;}
+
+{\upshape
+\ \ for(i=0;i{\textless}n;i++)}
+
+{\upshape
+\ \ \{}
+
+{\upshape
+\ \ \ \ sx+=x[i];}
+
+{\upshape
+\ \ \ \ sy+=y[i];}
+
+{\upshape
+\ \ \ \ syx+=y[i]*x[i];}
+
+{\upshape
+\ \ \ \ sx2+=x[i]*x[i];}
+
+{\upshape
+\ \ \}}
+
+{\upshape
+//Расчёт коэффициентов линии регрессиии.}
+
+{\upshape
+\ \ b=(n*syx-sy*sx)/(n*sx2-sx*sx);}
+
+{\upshape
+\ \ a=(sy-b*sx)/n;}
+
+{\upshape
+\ \ cout{\textless}{\textless}null{<<}a=null{<<}{\textless}{\textless}a{\textless}{\textless}null{<<}
+b=null{<<}{\textless}{\textless}b{\textless}{\textless}endl;}
+
+{\upshape
+//Формирование массивов для изображения линии регрессии на}
+
+{\upshape
+// графике.}
+
+{\upshape
+\ \ for(i=0;i{\textless}70;i++)}
+
+{\upshape
+\ \ \{}
+
+{\upshape
+\ \ \ \ x2[i]=x[i]+1;}
+
+{\upshape
+\ \ \ \ y2[i]=a+b*x2[i];}
+
+{\upshape
+\ \ \}}
+
+{\upshape
+//Вычисление ожидаемых значений – растворимость}
+
+{\upshape
+//азотнокислого натрия при температурах 25, 32 и 45}
+
+{\upshape
+// градусах .}
+
+{\upshape
+\ \ cout{\textless}{\textless}null{<<}Xr  Yr{\textbackslash}nnull{<<};}
+
+{\upshape
+\ \ for(i=0;i{\textless}k;i++)}
+
+{\upshape
+\ \ \{yr[i]=a+b*xr[i];}
+
+{\upshape
+\ \ cout{\textless}{\textless}xr[i]{\textless}{\textless}null{<<}
+null{<<}{\textless}{\textless}yr[i]{\textless}{\textless}endl;\}}
+
+{\upshape
+\ \ gr-{\textgreater}SetRanges(x[0],80,70,140);\ \ }
+
+{\upshape
+\ \ gr-{\textgreater}SetFontSize(3);}
+
+{\upshape
+\ \ //Оси координат}
+
+{\upshape
+\ \ gr-{\textgreater}Axis();}
+
+{\upshape
+\ \ //Сетка}
+
+{\upshape
+\ \ gr-{\textgreater}Grid();}
+
+{\upshape
+\ \ //Первая легенда}
+
+{\upshape
+\ \ gr-{\textgreater}AddLegend(null{<<}Экспериментnull{<<},null{<<}b onull{<<});}
+
+{\upshape
+\ \ //График экспериментальных точек, голубой (b) цвет.}
+
+{\upshape
+\ \ gr-{\textgreater}Plot(x,y,null{<<}b onull{<<});}
+
+{\upshape
+\ \ //Вторая легенда}
+
+{\upshape
+\ \ gr-{\textgreater}AddLegend(null{<<}Расчетnull{<<},null{<<}r *null{<<});}
+
+{\upshape
+\ \ //График ожидаемых значений.}
+
+{\upshape
+\ \ gr-{\textgreater}Plot(xr,yr,null{<<}r *null{<<});}
+
+{\upshape
+\ \ //Третья легенда}
+
+{\upshape
+\ \ gr-{\textgreater}AddLegend(null{<<}Линия регрессииnull{<<},null{<<}k-null{<<});}
+
+{\upshape
+\ \ //Изображение линиии регрессии.}
+
+{\upshape
+\ \ gr-{\textgreater}Plot(x2,y2,null{<<}k-null{<<});}
+
+{\upshape
+\ \ //Заголовок}
+
+{\upshape
+\ \ gr-{\textgreater}Title(null{<<}Задача Менделееваnull{<<});}
+
+{\upshape
+\ \ //Подпись по оси абсцисс}
+
+{\upshape
+\ \ gr-{\textgreater}Label('x',null{<<}tnull{<<},0);}
+
+{\upshape
+\ \ //Подпись по оси ординат}
+
+{\upshape
+\ \ gr-{\textgreater}Label('y',null{<<}NaNO\_3null{<<});}
+
+{\upshape
+\ \ //Вывод легенды}
+
+{\upshape
+\ \ gr-{\textgreater}Legend(2);}
+
+{\upshape
+return 0;}
+
+{\upshape
+\}}
+
+{\upshape
+int main(int argc,char **argv)}
+
+{\upshape
+\{}
+
+{\upshape
+\ \ setlocale(LC\_CTYPE, null{<<}ru\_RU.utf8null{<<});}
+
+{\upshape
+\ \ mglQT gr(sample,null{<<}Plotnull{<<});}
+
+{\upshape
+\ \ return gr.Run();}
+
+{\upshape
+\}}
+
+После запуска программы на экране пользователь увидит следующие значения
+
+{\bfseries
+X\textlatin{[D?]}}
+
+{\bfseries
+0 4 10 15 21 29 36 51 68 \textlatin{[D?]}}
+
+{\bfseries
+Y\textlatin{[D?]}}
+
+{\bfseries
+66.7 71 76.3 80.6 85.7 92.9 99.4 113.6 125.1 \textlatin{[D?]}}
+
+{\bfseries
+k=3\textlatin{[D?]}}
+
+{\bfseries
+a=67.5078 b=0.87064\textlatin{[D?]}}
+
+{\bfseries
+Xr  Yr\textlatin{[D?]}}
+
+{\bfseries
+25 89.2738\textlatin{[D?]}}
+
+{\bfseries
+32 95.3683\textlatin{[D?]}}
+
+{\bfseries
+45 106.687\textlatin{[D?]}}
+
+Графическое решение задачи, полученное с помощью средств библиотеки MathGL, представлено на рис. \ref{seq:ref10}.
+
+\begin{minipage}{15.956cm}
+{\itshape
+Рис. {\refstepcounter{qwertya}\theqwertya\label{seq:ref10}}. Графическое решение задачи \ref{seq:ref8}}
+\includegraphics[scale=0.33]{mgl-img011}\end{minipage}
+
+Для изучения всех возможностей MathGL, авторы советуют обратиться к документации по MathGL. При освоении библиотеки
+MathGL следует помнить, что логика и синтаксис библиотеки напоминает синтаксис Scilab и  Octave.
+
+\clearpage\printindex
+%
+%{\textless}!{}-{}-EndFragment{}-{}-{\textgreater}
+%12 Февраль 2013 г. 20:27
+
+\endinput

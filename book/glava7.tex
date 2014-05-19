@@ -75,18 +75,18 @@
 &\ \linebreak\Sys{r=-25}\\\hline
 \Sys{oct} &\raggedright Вывод величин в восьмеричной системе счисления&% (для этого надо снять флаг вывод в десятичной) &
 \lstinline!int p=23;!\linebreak
-//\Sys{Отменить, установленный по умолчанию, вывод в десятичной системе счисления}\linebreak
+//\emph{\Sys{Отменить, установленный по умолчанию, вывод в десятичной системе счисления}}\linebreak
 \lstinline!cout.unsetf(ios::dec);!\linebreak
-//\Sys{Установить вывод в восьмеричной системе счисления}\linebreak
+//\emph{\Sys{Установить вывод в восьмеричной системе счисления}}\linebreak
 \lstinline!cout.setf(ios::oct);!\linebreak
 \lstinline!cout<<"p="<<p<<endl;!
 &
 \ \linebreak\ \linebreak\ \linebreak\Sys{p=27}\\\hline
 \Sys{hex} &\raggedright Вывод величин в шестнадцатеричной системе счисления&% (для этого надо снять флаг вывод в десятичной) &
 \lstinline!int p=23;! \linebreak
-//\Sys{Отменить, установленный по умолчанию, вывод в десятичной системе счисления}\linebreak
+//\emph{\Sys{Отменить, установленный по умолчанию, вывод в десятичной системе счисления}}\linebreak
 \lstinline!cout.unsetf(ios::dec);!\linebreak
-//\Sys{Установить вывод в шестнадцатеричной системе счисления}\linebreak
+//\emph{\Sys{Установить вывод в шестнадцатеричной системе счисления}}\linebreak
 \lstinline!cout.setf(ios::hex);!\linebreak 
 \lstinline!cout<<"p="<<p<<endl;!
 &\ \linebreak\ \linebreak\ \linebreak\Sys{p=17}\\\hline
@@ -187,18 +187,20 @@
 \lstinline!cout<<noboolalpha<<a<<endl;! &\ \linebreak 1\\\hline
 \Sys{showpos} &%\raggedright 
 Выводить знак «$+$» для по\-ло\-жи\-тель\-ных чисел &
-\lstinline!int p=29;!
+\lstinline!int p=29;!\linebreak
 \lstinline!cout<<"p="<<showpos<<p<<endl;!&\ \linebreak\Sys{p=+29}\\\hline
 \Sys{noshowpos} &%\raggedright 
 Не выводить знак «$+$» для положи\-тельных чисел &
 \lstinline!int p=29;!\linebreak
-\lstinline!cout<<"p="<<noshowpos;!\linebreak
-\lstinline!cout<<p<<endl;! &\ \linebreak\ \linebreak\Sys{p=29}\\\hline
+\lstinline!cout<<"p="<<noshowpos<<p<<endl;!\linebreak
+%\lstinline!cout<<p<<endl;! 
+&\ \linebreak\ \linebreak\Sys{p=29}\\\hline
 \Sys{uppercase} &%\raggedright 
 Использовать прописные буквы в шестнадцатеричных цифрах &
 \lstinline!int p=253;!\linebreak
-\lstinline!cout<<"p="<<hex<<uppercase;!\linebreak
-\lstinline!cout<<p<<endl;! &\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
+\lstinline!cout<<"p="<<hex<<uppercase<<p<<endl;!\linebreak
+%\lstinline!cout<<p<<endl;! 
+&\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
 \Sys{nouppercase} &%\raggedright 
 Использовать строчные буквы в шестнадцатеричных цифрах &
 \lstinline!int p=253;!\linebreak
@@ -212,7 +214,8 @@
 Не выводить индикатор основания системы счисления &
 \lstinline!int p=253;!\linebreak
 \lstinline!cout<<"p="<<hex<<uppercase;!\linebreak
-\lstinline!cout<<noshowbase<<p<<endl;!&\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
+\lstinline!cout<<noshowbase<<p<<endl;!
+&\ \linebreak\ \linebreak\Sys{p=FD}\\\hline
 \Sys{setfill(c)} &\raggedright Установить символ \Sys{с} как заполнитель &
 \lstinline!cout<<"x="<<right<<setw(10)<<setprecision(4);!\linebreak
 \lstinline|cout<<setfill('!');|\linebreak
@@ -224,8 +227,9 @@
 \Sys{scientific} &%\raggedright 
 Экспоненциальная форма вывода вещественных чисел &
 \lstinline!double p=146.673;!\linebreak
-\lstinline!cout<<"p="<<scientific;!\linebreak
-\lstinline!cout<<p<<endl;!&\ \linebreak\ \linebreak\Sys{p=1.466730e+002}\\\hline
+\lstinline!cout<<"p="<<scientific<<p<<endl;!%\linebreak
+%\lstinline!cout<<p<<endl;!
+&\ \linebreak\ \linebreak\Sys{p=1.466730e+002}\\\hline
 \Sys{fixed} &\raggedright Фиксированная форма вывода вещественных чисел (по умолчанию) &
 \lstinline!cout<<"p="<<fixed<<p<<endl;!&\Sys{p=146.673}\\\hline
 \end{longtable}
@@ -437,7 +441,7 @@ return 0;
 Два числа в текстовом файле считаются разделенными, если между ними есть хотя бы один из символов: провел, табуляция,
 символ конца строки.
 
-Хорошо если программисту заранее известно, сколько и каких значений хранится в текстовом файле. Однако часто просто
+Хорошо, если программисту заранее известно, сколько и каких значений хранится в текстовом файле. Однако, часто просто
 известен тип значений, хранящихся в файле, при этом количество значений в файле может быть различным. При решении
 подобной проблемы необходимо считывать значения из файла по одному, а перед каждым считыванием проверять достигнут ли
 конец файла. Для проверки достигнут или нет \emph{конец файла}, служит функция 
@@ -491,8 +495,37 @@ int main()
 }
 \end{lstlisting}
 
+Результат работы программы к задаче~\ref{ch07:prg1}:
+\begin{verbatim}
+3.14159 2.789 -21.14 543.89 -90.1  n=5
+\end{verbatim}
+
+Программа работает корректно, если текстовый файл \Sys{abc.txt} был создан с помощью 
+программы к задаче~\ref{ch07:prg0}. Предположим, что файл создавался в текстовом редакторе 
+и пользователь ввел после последней цифры символ пробела, табуляции или перехода на новую строку. 
+Тогда, результат будет таким:
+\begin{verbatim}
+3.14159 2.789 -21.14 543.89 -90.1 -90.1  n= 6
+\end{verbatim}
+
+Происходит это потому, что после чтения последней цифры из потока конец файла не достигнут, оператор 
+цикла выполняется еще один раз, значение переменной $n$ увеличивается на единицу, а так как значение 
+переменной $a$ не изменилось, то выводится повторно. Один из способов решения данной проблемы может быть таким:
+\begin{lstlisting}
+while (!f.eof())
+{
+  f>>a;
+  if (!f.eof()) //`Проверяем, достигнут ли конец файла, если нет --- печатаем значение a`
+  {
+    cout<<a<<"\t";
+    n++;
+  }
+}
+\end{lstlisting}
+
 Если количество вещественных чисел записанных в файл известно заранее, то текст программы можно переписать следующим
 образом:
+
 \begin{lstlisting}
 #include <iostream>
 #include <fstream>
@@ -829,7 +862,7 @@ int main()
 Далее приведен фрагмент программного кода, который демонстрирует пример записи информации в файл
 \Sys{my.txt}.
 \begin{lstlisting}
-char fio[15]="`\Sys{Махарадзе В.}`";
+char fio[30]="`\Sys{Махарадзе В.}`";
 int a=5, b=5, c=4;
 float s= (float) (a+b+c)/3;
 FILE *f;
@@ -860,7 +893,7 @@ fclose(f);
 int i,nom;
 float Ves;
 int Rost;
-char fio[7],name[6];
+char fio[15],name[15];
 FILE *f;	
 f=fopen("test.txt","r");
 for (i=0;i<3;i++)

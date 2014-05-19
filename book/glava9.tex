@@ -493,8 +493,8 @@ int main(int argc, char **argv)
 
 В табл. \ref{ch09:refTable0} представлены \index{Библиотека!комплексных чисел!основные
 функции}\emph{основные математические функции} для работы с комплексными числами.
-{\tabcolsep=0.3em\noindent\footnotesize
-\begin{longtable}{|p{0.41\textwidth}|p{0.55\textwidth}|}
+{\tabcolsep=0.3em\noindent\small
+\begin{longtable}{|p{0.31\textwidth}|p{0.65\textwidth}|}
 \caption{Основные функции комплексного аргумента}\label{ch09:refTable0}\\
 \hline
 \Emph{Прототип функции} &\Emph{Описание функции}\\
@@ -506,26 +506,27 @@ int main(int argc, char **argv)
 \Emph{Прототип функции} &\Emph{Описание функции}\\
 \hline \hline
 \endhead
-\lstinline!double abs(complex z)! &Возвращает модуль комплексного числа~$z$.\\\hline
-\lstinline!double arg(complex z)! &Возвращает значение аргумента комплексного числа~$z$.\\\hline
-\lstinline!double asin(complex z)! &Возвращает арксинус комплексного числа~$z$\\\hline
-\lstinline!double atan(complex z)! &Возвращает арктангенс комплексного числа~$z$ \\\hline
-\lstinline!complex conj(complex z)! &Возвращает число комплексно сопряженное числу~$z$\\\hline
-\lstinline!double cos(complex z)! &Возвращает косинус  комплексного числа~$z$.\\\hline
-\lstinline!double cosh(complex z)! &Возвращает гиперболический косинус комплексного числа~$z$.\\\hline
-\lstinline!double cosh(complex z)! &Возвращает экспоненту комплексного числа~$z$.\\\hline
-\lstinline!double imag(complex z)! &Возвращает мнимую часть комплексного числа~$z$.\\\hline
-\lstinline!double log(complex z)! &Возвращает натуральный логарифм комплексного числа~$z$.\\\hline
-\lstinline!double log10(complex z)! &Возвращает десятичный логарифм комплексного числа~$z$.\\\hline
-\lstinline!double norm(complex z)! &Возвращает квадрат модуля комплексного числа~$z$.\\\hline
-\lstinline!complex pow(complex x, complex y)! &Возвращает степень комплексного числа~$z$.\\\hline
-\lstinline!complex polar(double mag, double angle)! &Формирует комплексное число с модулем $mag$ и аргументом $angle$.\\\hline
-\lstinline!double real(complex z)! &Возвращает действительную часть комплексного числа~$z$.\\\hline
-\lstinline!complex sin(complex z)! &Возвращает синус комплексного числа~$z$.\\\hline
-\lstinline!complex sinh(complex z)! &Возвращает гиперболический синус комплексного числа~$z$.\\\hline
-\lstinline!complex sqrt(complex z)! &Возвращает квадратный корень комплексного числа~$z$.\\\hline
-\lstinline!complex tan(complex z)! &Возвращает тангенс  комплексного числа~$z$.\\\hline
-\lstinline!complex tan(complex z)! &Возвращает гиперболический тангенс комплексного числа~$z$.\\\hline
+\Sys{double abs(complex z)}
+&Возвращает модуль комплексного числа~$z$.\\\hline
+\Sys{double arg(complex z)} &Возвращает значение аргумента комплексного числа~$z$.\\\hline
+%\lstinline!double asin(complex z)! &Возвращает арксинус комплексного числа~$z$\\\hline
+%\lstinline!double atan(complex z)! &Возвращает арктангенс комплексного числа~$z$ \\\hline
+\Sys{complex conj(complex z)} &Возвращает число комплексно сопряженное числу~$z$\\\hline
+\Sys{complex cos(complex z)} &Возвращает косинус  комплексного числа~$z$.\\\hline
+\Sys{complex cosh(complex z)} &Возвращает гиперболический косинус комплексного числа~$z$.\\\hline
+\Sys{complex exp(complex z)} &Возвращает экспоненту комплексного числа~$z$.\\\hline
+\Sys{double imag(complex z)} &Возвращает мнимую часть комплексного числа~$z$.\\\hline
+\Sys{complex log(complex z)} &Возвращает натуральный логарифм комплексного числа~$z$.\\\hline
+\Sys{complex log10(complex z)} &Возвращает десятичный логарифм комплексного числа~$z$.\\\hline
+\Sys{double norm(complex z)} &Возвращает квадрат модуля комплексного числа~$z$.\\\hline
+\Sys{complex pow(complex x, complex y)} &Возвращает степень комплексного числа~$z$.\\\hline
+\Sys{complex polar(double mag, double angle)} &Формирует комплексное число с модулем $mag$ и аргументом $angle$.\\\hline
+\Sys{double real(complex z)} &Возвращает действительную часть комплексного числа~$z$.\\\hline
+\Sys{complex sin(complex z)} &Возвращает синус комплексного числа~$z$.\\\hline
+\Sys{complex sinh(complex z)} &Возвращает гиперболический синус комплексного числа~$z$.\\\hline
+\Sys{complex sqrt(complex z)} &Возвращает квадратный корень комплексного числа~$z$.\\\hline
+\Sys{complex tan(complex z)} &Возвращает тангенс  комплексного числа~$z$.\\\hline
+\Sys{complex tanh(complex z)} &Возвращает гиперболический тангенс комплексного числа~$z$.\\\hline
 \end{longtable}
 }
 
@@ -548,13 +549,6 @@ int main()
 }
 \end{lstlisting}
 
-%\begin{minipage}{12.965cm}
-%{\centering\itshape
-%Рис. {\refstepcounter{qwertya}\theqwertya\label{ch09:prg3}} Работа с математическими функциями комплексного аргумента
-%\par}
-% [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[scale=0.33]{glava9-img004}
-%\end{minipage}
 Результаты работы программы с некоторыми функциями комплексного аргумента.
 \begin{verbatim}
 x*y=(-16,50)
@@ -582,7 +576,6 @@ using namespace std;
 int main()
 {
   complex <double> b(sqrt(3),-1),y;
-  cout<<"b="<<b;
   y=pow(b,20);
   cout<<"y="<<y<<endl;
   cout<<real(y)/pow(2,19)<<"\t";
@@ -935,25 +928,18 @@ if(!INVERSE(A, N, X))
   for(i=0;i<N;cout<<endl,i++)
   for(j=0;j<N;j++)
     cout<<X[i][j]<<"\t";
+  umn(X,B,Y,N,N,N);
+  cout<<"\n `\Sys{Решение матричного уравнения}` \n";
+  for(i=0;i<N;cout<<endl,i++)
+    for(j=0;j<N;j++)
+      cout<<Y[i][j]<<"\t";
 }
 else cout<<"`\Sys{Не существует обратной матрицы}`\n";
 cout<<"`\Sys{Определитель}`="<<determinant(A,N);
-umn(X,B,Y,N,N,N);
-cout<<"\n `\Sys{Решение матричного уравнения}` \n";
-for(i=0;i<N;cout<<endl,i++)
-  for(j=0;j<N;j++)
-    cout<<Y[i][j]<<"\t";
 return 0;
 }
 \end{lstlisting}
 
-
-%\begin{minipage}{12.965cm}
-%{\itshape
-%Рис. {\refstepcounter{qwertya}\theqwertya\label{ch09:prg8}} Результат работы программы к задаче \ref{ch09:refDrawing4}}
-% [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[scale=0.33]{glava9-img009}
-%\end{minipage}
 Результат работы программы к задаче~\ref{ch09:prg4}:
 \begin{verbatim}
 N=3
