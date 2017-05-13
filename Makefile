@@ -25,7 +25,7 @@ TUNEXMLPARAMS=
 
 all: 
 	make distclean
-	#make index
+	make index
 	make pass ||: 
 	make pass ||:
 	make pass ||:

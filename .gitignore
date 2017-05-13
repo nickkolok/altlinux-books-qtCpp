@@ -1,5 +1,7 @@
 # TeX/LaTeX temporary files
 *.idx
+*.ind
+*.ilg
 *.aux
 *.block
 *.dvi
