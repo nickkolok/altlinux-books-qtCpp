@@ -1,0 +1,6 @@
+# Only C/C++ sources and text files
+*
+!*.cpp
+!*.cc
+!*.txt
+!.gitignore
